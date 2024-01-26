@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://djutimjaa1vx1"]
+
+[ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="1_5otn2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nucog"]
+size = Vector2(501, 10)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wg504"]
+
+[node name="JoninOmaScene" type="Node2D"]
+
+[node name="Lattia" type="Node2D" parent="."]
+position = Vector2(249, 642)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lattia"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lattia/StaticBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_nucog")
+
+[node name="Sprite2D" type="Sprite2D" parent="Lattia"]
+texture = SubResource("PlaceholderTexture2D_wg504")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 10)
+
+[node name="Player" parent="." instance=ExtResource("1_5otn2")]
+position = Vector2(165, 132)
