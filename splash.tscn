@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbsjkjyg6w0sk"]
+[gd_scene load_steps=7 format=3 uid="uid://bbsjkjyg6w0sk"]
 
 [ext_resource type="Texture2D" uid="uid://di0f4kpenijgb" path="res://assets/gfx/gamee.png" id="1_sftpe"]
 [ext_resource type="Script" path="res://splash.gd" id="1_tpof6"]
+[ext_resource type="AudioStream" uid="uid://ksl126xb0xru" path="res://assets/sfx/gamee_boom.mp3" id="3_spc48"]
 
 [sub_resource type="Animation" id="Animation_qkeem"]
 length = 0.001
@@ -54,5 +55,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ge6i0")
 }
 autoplay = "fade_inout"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_spc48")
+volume_db = -5.153
+autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
