@@ -1,25 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://djsog7ytd4f33"]
+[gd_scene load_steps=12 format=3 uid="uid://djsog7ytd4f33"]
+
+[ext_resource type="Texture2D" uid="uid://b0t30l36sshut" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_20ynj"]
-radius = 20.0
+radius = 11.1803
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjpwo"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(20, 329, 24, 23)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jp0j1"]
-radius = 31.0
-height = 102.0
+height = 24.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jqld"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(20, 282, 24, 26)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ojdi"]
-height = 90.0
+radius = 2.0
+height = 21.2603
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1rwc"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(36, 31, 19, 19)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ltmb"]
-height = 92.0
+radius = 3.16142
+height = 21.4682
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gb18q"]
-radius = 13.0
-height = 120.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ck5"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(13, 92, 13, 22)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ahjv2"]
-radius = 13.0
-height = 120.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip4ap"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(23, 240, 13, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mos2"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(32, 176, 12, 16)
 
 [node name="Player" type="Node2D"]
 
@@ -34,22 +53,12 @@ collision_mask = 16385
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/Head"]
 shape = SubResource("CircleShape2D_20ynj")
 
-[node name="Sprite2D" type="ColorRect" parent="BodyParts/Head"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/Head"]
+texture = SubResource("AtlasTexture_mjpwo")
 
 [node name="Body" type="RigidBody2D" parent="BodyParts"]
 z_index = 1
-position = Vector2(0, 74)
+position = Vector2(1, 28)
 collision_layer = 16384
 collision_mask = 32769
 mass = 10.0
@@ -57,132 +66,85 @@ mass = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/Body"]
 shape = SubResource("CapsuleShape2D_jp0j1")
 
-[node name="Sprite2D" type="ColorRect" parent="BodyParts/Body"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -50.0
-offset_right = 30.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.835294, 0.839216, 1)
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/Body"]
+texture = SubResource("AtlasTexture_8jqld")
 
 [node name="LeftHand" type="RigidBody2D" parent="BodyParts"]
-position = Vector2(0, 82)
+position = Vector2(14, 29)
 collision_layer = 8192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/LeftHand"]
+position = Vector2(0, 1)
+rotation = -0.71733
 shape = SubResource("CapsuleShape2D_2ojdi")
 
-[node name="Sprite2D" type="ColorRect" parent="BodyParts/LeftHand"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -45.0
-offset_right = 10.0
-offset_bottom = 45.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.913725, 0.588235, 0.772549, 1)
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/LeftHand"]
+texture = SubResource("AtlasTexture_k1rwc")
 
 [node name="RightHand" type="RigidBody2D" parent="BodyParts"]
 z_index = 2
-position = Vector2(0, 82)
+position = Vector2(-10, 30)
 collision_layer = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/RightHand"]
+rotation = 0.298451
 shape = SubResource("CapsuleShape2D_2ltmb")
 
-[node name="Sprite2D" type="ColorRect" parent="BodyParts/RightHand"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -45.0
-offset_right = 10.0
-offset_bottom = 45.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.54902, 0.54902, 1)
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/RightHand"]
+texture = SubResource("AtlasTexture_d0ck5")
 
 [node name="LeftLeg" type="RigidBody2D" parent="BodyParts"]
-position = Vector2(-1, 173)
+position = Vector2(8, 45)
 collision_layer = 8192
 mass = 3.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/LeftLeg"]
-shape = SubResource("CapsuleShape2D_gb18q")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BodyParts/LeftLeg"]
+polygon = PackedVector2Array(-3, -7, -6, 8, 6, 8, 7, 4, 1, 3, 2, -7)
 
-[node name="Sprite2D" type="ColorRect" parent="BodyParts/LeftLeg"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.5
-offset_top = -60.0
-offset_right = 12.5
-offset_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.823529, 0.690196, 0.941176, 1)
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/LeftLeg"]
+texture = SubResource("AtlasTexture_ip4ap")
 
 [node name="RightLeg" type="RigidBody2D" parent="BodyParts"]
 z_index = 2
-position = Vector2(2, 173)
+position = Vector2(-2, 45)
 collision_layer = 4096
 mass = 3.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/RightLeg"]
-shape = SubResource("CapsuleShape2D_ahjv2")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BodyParts/RightLeg"]
+polygon = PackedVector2Array(-3, -8, -6, 8, 6, 8, 5, 4, 0, 4, 1, -8)
 
-[node name="Sprite2D" type="ColorRect" parent="BodyParts/RightLeg"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.5
-offset_top = -60.0
-offset_right = 12.5
-offset_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.556863, 0.552941, 0, 1)
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/RightLeg"]
+texture = SubResource("AtlasTexture_7mos2")
 
 [node name="Joints" type="Node2D" parent="BodyParts"]
 
 [node name="HeadJoint" type="PinJoint2D" parent="BodyParts/Joints"]
-position = Vector2(0, 24)
+position = Vector2(1, 16)
+scale = Vector2(0.5, 0.5)
 node_a = NodePath("../../Head")
 node_b = NodePath("../../Body")
 disable_collision = false
 
 [node name="LeftHandJoint" type="PinJoint2D" parent="BodyParts/Joints"]
-position = Vector2(0, 42)
+position = Vector2(8, 20)
+scale = Vector2(0.5, 0.5)
 node_a = NodePath("../../LeftHand")
 node_b = NodePath("../../Body")
 
 [node name="RightHandJoint" type="PinJoint2D" parent="BodyParts/Joints"]
-position = Vector2(0, 42)
+position = Vector2(-8, 19)
+scale = Vector2(0.5, 0.5)
 node_a = NodePath("../../RightHand")
 node_b = NodePath("../../Body")
 
 [node name="LeftLegJoint" type="PinJoint2D" parent="BodyParts/Joints"]
-position = Vector2(1, 113)
+position = Vector2(6, 37)
+scale = Vector2(0.5, 0.5)
 node_a = NodePath("../../LeftLeg")
 node_b = NodePath("../../Body")
 
 [node name="RightLegJoint" type="PinJoint2D" parent="BodyParts/Joints"]
-position = Vector2(1, 113)
+position = Vector2(-3, 37)
+scale = Vector2(0.5, 0.5)
 node_a = NodePath("../../RightLeg")
 node_b = NodePath("../../Body")
