@@ -54,6 +54,7 @@ func slide_n_slip():
 	
 func _pie_hit():
 	# please kill me
+	print("TODO pie hit sound pls add")
 	_play_random_face_anim()
 	var body_velocity = body.linear_velocity
 	var dir = Direction.LEFT if body_velocity.x < 0 else Direction.RIGHT
@@ -174,4 +175,9 @@ func _mihin_meni_pedro_tuu_takas():
 func _on_prop_detector_area_2d_body_entered(body):
 	if body.is_in_group("Pie"):
 		_pie_hit()
+	if body.is_in_group("CannonBall"):
+		_cannonball_hit(body)
+		
+func _cannonball_hit(body):
+	print("TODO play cannonball hit sound and remove layer 8 from body")
 
