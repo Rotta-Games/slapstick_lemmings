@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8lbghk5bn7nh"]
+
+[ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="1_8g4bc"]
+[ext_resource type="Script" path="res://scenes/props/cannon.gd" id="1_g5anv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_macha"]
+atlas = ExtResource("1_8g4bc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms2bp"]
+atlas = ExtResource("1_8g4bc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8dl0"]
+atlas = ExtResource("1_8g4bc")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48pdp"]
+atlas = ExtResource("1_8g4bc")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqwqw"]
+atlas = ExtResource("1_8g4bc")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27ybp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_macha")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms2bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8dl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48pdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqwqw")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 20.0
+}]
+
+[node name="Cannon" type="RigidBody2D"]
+script = ExtResource("1_g5anv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -9)
+sprite_frames = SubResource("SpriteFrames_27ybp")
+animation = &"shoot"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-23, -20, -26, 1, -7, 5, -5, 20, 24, 20, 27, -4, 17, -12)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-13, -9)
+rotation = 1.62316
+target_position = Vector2(0, 30)
+
+[node name="CannonBallSpawnPoint" type="Node2D" parent="."]
+position = Vector2(-35, -11)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
