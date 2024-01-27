@@ -1,13 +1,44 @@
-extends Node2D
+extends RigidBody2D
 
 
-# Called when the node enters the scene tree for the first time.
+var draggable = true
+
+var last_mouse_pos = Vector2()
+var last_diff = float()
+
+
 func _ready():
-	pass # Replace with function body.
+	var mouse_pos = get_viewport().get_mouse_position()
+	set_global_position(mouse_pos)
+	self.gravity_scale = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
-	pass
+	if draggable and Global.is_dragging:
+		var mouse_pos = get_viewport().get_mouse_position()
+
+		var pos = get_global_position()
+		last_mouse_pos = mouse_pos
+
+		var diff = pos.distance_to(mouse_pos)
+		last_diff = diff
+
+		set_global_position(mouse_pos)
+
+
+
+func _input(event):
+	if not draggable:
+		return
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+			self.draggable = false
+			self.gravity_scale = 1
+			var mouse_pos = get_viewport().get_mouse_position()
+
+			var diff = mouse_pos - last_mouse_pos
+			apply_central_force(diff * 1000)
+
 
 func _on_static_body_2d_body_entered(body):
 	if body.is_in_group("PlayerPart"):

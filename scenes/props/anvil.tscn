@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d078k3p4ef5wd"]
+
+[ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="1_itmv4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqiwt"]
+radius = 18.0095
+height = 61.9757
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo83f"]
+atlas = ExtResource("1_itmv4")
+region = Rect2(133, 24, 52, 36)
+
+[node name="Anvil" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+mass = 0.5
+gravity_scale = 2.202
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(2, 0)
+rotation = 1.56032
+shape = SubResource("CapsuleShape2D_jqiwt")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = SubResource("AtlasTexture_uo83f")
