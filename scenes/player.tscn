@@ -48,59 +48,6 @@ region = Rect2(20, 386, 22, 14)
 [node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource("1_ydejx")
 
-[node name="Joints" type="Node2D" parent="."]
-
-[node name="HeadJoint" type="PinJoint2D" parent="Joints"]
-position = Vector2(1, 16)
-scale = Vector2(0.5, 0.5)
-node_a = NodePath("../../BodyParts/Head")
-node_b = NodePath("../../BodyParts/Body")
-disable_collision = false
-
-[node name="LeftHandJoint" type="PinJoint2D" parent="Joints"]
-position = Vector2(8, 20)
-scale = Vector2(0.5, 0.5)
-node_a = NodePath("../../BodyParts/LeftHand")
-node_b = NodePath("../../BodyParts/Body")
-angular_limit_lower = 0.942478
-angular_limit_upper = -0.792379
-
-[node name="RightHandJoint" type="PinJoint2D" parent="Joints"]
-position = Vector2(-8, 19)
-scale = Vector2(0.5, 0.5)
-node_a = NodePath("../../BodyParts/RightHand")
-node_b = NodePath("../../BodyParts/Body")
-angular_limit_lower = -0.523599
-angular_limit_upper = 0.523599
-
-[node name="LeftLegJoint" type="PinJoint2D" parent="Joints"]
-position = Vector2(7, 39)
-scale = Vector2(0.5, 0.5)
-node_a = NodePath("../../BodyParts/LeftLeg")
-node_b = NodePath("../../BodyParts/Body")
-angular_limit_enabled = true
-angular_limit_lower = -0.174533
-angular_limit_upper = 1.0472
-
-[node name="RightLegJoint" type="PinJoint2D" parent="Joints"]
-position = Vector2(-3, 39)
-scale = Vector2(0.5, 0.5)
-node_a = NodePath("../../BodyParts/RightLeg")
-node_b = NodePath("../../BodyParts/Body")
-angular_limit_enabled = true
-angular_limit_lower = -0.174533
-angular_limit_upper = 1.0472
-motor_target_velocity = 0.0872665
-
-[node name="HatJoint" type="GrooveJoint2D" parent="Joints"]
-position = Vector2(0, -4)
-scale = Vector2(0.5, 0.5)
-node_a = NodePath("../../Hat")
-node_b = NodePath("../../BodyParts/Head")
-disable_collision = false
-length = 5.0
-initial_offset = 1.0
-
 [node name="BodyParts" type="Node2D" parent="."]
 
 [node name="Head" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
@@ -118,6 +65,22 @@ shape = SubResource("RectangleShape2D_0mctt")
 
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/Head"]
 texture = SubResource("AtlasTexture_mjpwo")
+
+[node name="HeadJoint" type="PinJoint2D" parent="BodyParts/Head"]
+position = Vector2(1, 12)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("..")
+node_b = NodePath("../../Body")
+disable_collision = false
+
+[node name="HatJoint" type="GrooveJoint2D" parent="BodyParts/Head"]
+position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("../../../Hat")
+node_b = NodePath("..")
+disable_collision = false
+length = 5.0
+initial_offset = 1.0
 
 [node name="Body" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 z_index = 1
@@ -146,6 +109,14 @@ shape = SubResource("CapsuleShape2D_2ojdi")
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/LeftHand"]
 texture = SubResource("AtlasTexture_k1rwc")
 
+[node name="LeftHandJoint" type="PinJoint2D" parent="BodyParts/LeftHand"]
+position = Vector2(-6, -8)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("..")
+node_b = NodePath("../../Body")
+angular_limit_lower = 0.942478
+angular_limit_upper = -0.792379
+
 [node name="RightHand" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 z_index = 2
 position = Vector2(-10, 28)
@@ -158,6 +129,14 @@ shape = SubResource("CapsuleShape2D_2ltmb")
 
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/RightHand"]
 texture = SubResource("AtlasTexture_d0ck5")
+
+[node name="RightHandJoint" type="PinJoint2D" parent="BodyParts/RightHand"]
+position = Vector2(2, -9)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("..")
+node_b = NodePath("../../Body")
+angular_limit_lower = -0.523599
+angular_limit_upper = 0.523599
 
 [node name="LeftLeg" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 position = Vector2(13, 41)
@@ -173,6 +152,16 @@ polygon = PackedVector2Array(-3, -7, -6, 8, 6, 8, 7, 4, 1, 3, 2, -7)
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/LeftLeg"]
 texture = SubResource("AtlasTexture_ip4ap")
 
+[node name="LeftLegJoint" type="PinJoint2D" parent="BodyParts/LeftLeg"]
+position = Vector2(-1.08356, -6.23104)
+rotation = 1.07687
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("..")
+node_b = NodePath("../../Body")
+angular_limit_enabled = true
+angular_limit_lower = -0.174533
+angular_limit_upper = 1.0472
+
 [node name="RightLeg" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 z_index = 2
 position = Vector2(-6, 45)
@@ -187,6 +176,17 @@ polygon = PackedVector2Array(-3, -8, -6, 8, 6, 8, 5, 4, 0, 4, 1, -8)
 
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/RightLeg"]
 texture = SubResource("AtlasTexture_7mos2")
+
+[node name="RightLegJoint" type="PinJoint2D" parent="BodyParts/RightLeg"]
+position = Vector2(-0.902861, -6.64717)
+rotation = -0.598648
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("..")
+node_b = NodePath("../../Body")
+angular_limit_enabled = true
+angular_limit_lower = -0.174533
+angular_limit_upper = 1.0472
+motor_target_velocity = 0.0872665
 
 [node name="Hat" type="RigidBody2D" parent="." groups=["PlayerPart"]]
 z_index = 1
