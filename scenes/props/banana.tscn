@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhm3olaboa48h"]
+[gd_scene load_steps=5 format=3 uid="uid://dhm3olaboa48h"]
 
+[ext_resource type="Script" path="res://scenes/props/banana.gd" id="1_5sge8"]
 [ext_resource type="Texture2D" uid="uid://2ued6reh7nxo" path="res://assets/gfx/items.png" id="1_6e4fj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwwtu"]
 atlas = ExtResource("1_6e4fj")
 region = Rect2(82, 48, 22, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vxo"]
+size = Vector2(20, 12)
+
 [node name="Banana" type="Node2D"]
+script = ExtResource("1_5sge8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_wwwtu")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 3072
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_q6vxo")
+
+[connection signal="body_entered" from="StaticBody2D" to="." method="_on_static_body_2d_body_entered"]

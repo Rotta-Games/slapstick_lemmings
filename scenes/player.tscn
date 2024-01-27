@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://djsog7ytd4f33"]
 
-[ext_resource type="Texture2D" uid="uid://cr68f2nuaxylu" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
+[ext_resource type="Texture2D" uid="uid://b0t30l36sshut" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ydejx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mctt"]
@@ -45,7 +45,7 @@ region = Rect2(32, 176, 12, 16)
 atlas = ExtResource("1_xcw6x")
 region = Rect2(20, 386, 22, 14)
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource("1_ydejx")
 
 [node name="Joints" type="Node2D" parent="."]
@@ -95,7 +95,7 @@ motor_target_velocity = 0.0872665
 [node name="GrooveJoint2D" type="GrooveJoint2D" parent="Joints"]
 position = Vector2(0, -4)
 scale = Vector2(0.5, 0.5)
-node_a = NodePath("../../BodyParts/Hat")
+node_a = NodePath("../../Hat")
 node_b = NodePath("../../BodyParts/Head")
 disable_collision = false
 length = 5.0
@@ -103,7 +103,7 @@ initial_offset = 1.0
 
 [node name="BodyParts" type="Node2D" parent="."]
 
-[node name="Head" type="RigidBody2D" parent="BodyParts"]
+[node name="Head" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 z_index = 1
 position = Vector2(0, 4)
 collision_layer = 32768
@@ -119,7 +119,7 @@ shape = SubResource("RectangleShape2D_0mctt")
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/Head"]
 texture = SubResource("AtlasTexture_mjpwo")
 
-[node name="Body" type="RigidBody2D" parent="BodyParts"]
+[node name="Body" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 z_index = 1
 position = Vector2(1, 28)
 collision_layer = 16384
@@ -133,10 +133,9 @@ shape = SubResource("RectangleShape2D_ldm6s")
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/Body"]
 texture = SubResource("AtlasTexture_8jqld")
 
-[node name="LeftHand" type="RigidBody2D" parent="BodyParts"]
+[node name="LeftHand" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 position = Vector2(14, 28)
 collision_layer = 8192
-collision_mask = 32769
 mass = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/LeftHand"]
@@ -147,11 +146,10 @@ shape = SubResource("CapsuleShape2D_2ojdi")
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/LeftHand"]
 texture = SubResource("AtlasTexture_k1rwc")
 
-[node name="RightHand" type="RigidBody2D" parent="BodyParts"]
+[node name="RightHand" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 z_index = 2
 position = Vector2(-10, 28)
 collision_layer = 4096
-collision_mask = 32769
 mass = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/RightHand"]
@@ -161,7 +159,7 @@ shape = SubResource("CapsuleShape2D_2ltmb")
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/RightHand"]
 texture = SubResource("AtlasTexture_d0ck5")
 
-[node name="LeftLeg" type="RigidBody2D" parent="BodyParts"]
+[node name="LeftLeg" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 position = Vector2(13, 41)
 rotation = -1.07687
 collision_layer = 2048
@@ -175,7 +173,7 @@ polygon = PackedVector2Array(-3, -7, -6, 8, 6, 8, 7, 4, 1, 3, 2, -7)
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/LeftLeg"]
 texture = SubResource("AtlasTexture_ip4ap")
 
-[node name="RightLeg" type="RigidBody2D" parent="BodyParts"]
+[node name="RightLeg" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 z_index = 2
 position = Vector2(-6, 45)
 rotation = 0.598648
@@ -190,7 +188,7 @@ polygon = PackedVector2Array(-3, -8, -6, 8, 6, 8, 5, 4, 0, 4, 1, -8)
 [node name="Sprite2D" type="Sprite2D" parent="BodyParts/RightLeg"]
 texture = SubResource("AtlasTexture_7mos2")
 
-[node name="Hat" type="RigidBody2D" parent="BodyParts"]
+[node name="Hat" type="RigidBody2D" parent="." groups=["PlayerPart"]]
 z_index = 1
 position = Vector2(0, -8)
 collision_layer = 512
@@ -199,8 +197,8 @@ mass = 0.2
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 10)
 
-[node name="Sprite2D" type="Sprite2D" parent="BodyParts/Hat"]
+[node name="Sprite2D" type="Sprite2D" parent="Hat"]
 texture = SubResource("AtlasTexture_ih63x")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BodyParts/Hat"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hat"]
 polygon = PackedVector2Array(-11, 6, 11, 6, 11, 4, 4, -7, -3, -7, -11, 3)
