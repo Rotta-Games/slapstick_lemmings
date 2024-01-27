@@ -38,7 +38,6 @@ func _physics_process(delta):
 
 func _move_right(delta):
 	_flip(false)
-	body_parts.scale.x = 1
 	_move(delta, Direction.RIGHT)
 
 func _move_left(delta):
@@ -47,20 +46,22 @@ func _move_left(delta):
 	
 
 func _move(delta, dir : Direction):
-	body.apply_impulse(Vector2(-10 * dir, -10))
-	left_leg.apply_impulse(Vector2(10 * dir, -5))
-	right_leg.apply_impulse(Vector2(10 * dir, -5))
-	head.apply_impulse(Vector2(-10 * dir, -10))
+	body.apply_impulse(Vector2(-8 * dir, -8))
+	left_leg.apply_impulse(Vector2(8 * dir, -5))
+	right_leg.apply_impulse(Vector2(8 * dir, -5))
+	head.apply_impulse(Vector2(-8 * dir, -8))
 	
 	right_leg.angular_velocity = 15 * dir
 	left_leg.angular_velocity = 15 * dir
-	#left_leg.rotation = 0.4 * sin(left_leg.rotation + delta) * dir
-	#right_leg.rotation = 0.5 * sin(right_leg.rotation + delta) * dir
-	print("leg rotation: " + str(left_leg.rotation_degrees))
+
+
 
 func _idle(delta):
 	right_leg.angular_velocity = 0
 	left_leg.angular_velocity = 0
+	head.apply_impulse(Vector2(0, -50))
+	left_leg.apply_impulse(Vector2(0, 10))
+	right_leg.apply_impulse(Vector2(0, 10))
 
 func _flip(value):
 	for body_part in body_parts.get_children():
