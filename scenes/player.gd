@@ -9,13 +9,15 @@ extends Node2D
 @onready var head = $BodyParts/Head
 @onready var hat = $Hat
 @onready var head_sprite = $BodyParts/Head/AnimatedSprite2D
+@onready var floor_raycast = $FloorRayCast2D
 
 const face_anims = ["anim_1", "anim_2", "anim_3", "anim_4", "anim_5"]
 
-var move_right : bool = false
-var move_left : bool = false
+@onready var wall_collider = $SideWallCollider
 
-enum Direction{LEFT = -1, RIGHT = 1}
+enum Direction{LEFT = -1, RIGHT = 1, NOPE = 0}
+var move_dir: Direction = Direction.RIGHT
+
 
 const SLIP_FORCE = Vector2(120, -200)
 const SLIP_TORQUE = -5000.0
@@ -55,34 +57,40 @@ func _for_each_body_part(cb):
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_D:
-			move_right = true
-			move_left = false
+			self.move_dir = Direction.RIGHT
 		elif event.pressed and event.keycode == KEY_A:
-			move_left = true
-			move_right = false
+			self.move_dir = Direction.LEFT
 		else:
-			move_left = false
-			move_right = false
-			
+			self.move_dir = Direction.NOPE
+
+
 func _physics_process(delta):
+	_update_raycast_pos()
+	_clamp_head_rotation()
+	self.wall_collider.position = self.body.position - Vector2(0, 10)
 	if no_physics_timer > 0.0:
 		no_physics_timer -= delta
 		return
-		
-	if move_right:
+	if not _floored():
+		return
+	if self.move_dir == Direction.RIGHT:
 		_move_right(delta)
-	elif move_left:
+	elif self.move_dir == Direction.LEFT:
 		_move_left(delta)
 	else:
 		_idle(delta)
+		
+func _update_raycast_pos():
+	floor_raycast.position = body.position
 	
-	_clamp_head_rotation()
+func _floored():
+	return floor_raycast.is_colliding()
 
 func _clamp_head_rotation():
 	if head.rotation > PI / 2:
-		head.angular_velocity = -15
+		head.angular_velocity = -5
 	if head.rotation < -PI / 2:
-		head.angular_velocity = 15
+		head.angular_velocity = 5
 
 func _move_right(delta):
 	_flip(false)
@@ -91,7 +99,6 @@ func _move_right(delta):
 func _move_left(delta):
 	_flip(true)
 	_move(delta, Direction.LEFT)
-	
 
 func _move(delta, dir : Direction):
 	body.apply_impulse(Vector2(-8 * dir, -8))
@@ -103,17 +110,23 @@ func _move(delta, dir : Direction):
 	left_leg.angular_velocity = 15 * dir
 
 
-
 func _idle(delta):
 	right_leg.angular_velocity = 0
 	left_leg.angular_velocity = 0
-	head.apply_impulse(Vector2(0, -50))
+	head.apply_impulse(Vector2(0, -40))
 	left_leg.apply_impulse(Vector2(0, 10))
 	right_leg.apply_impulse(Vector2(0, 10))
 
 func _flip(value):
 	for body_part in body_parts.get_children():
 		body_part.scale.x = -1 if value else 1
+
+
+func _on_side_wall_collider_area_entered(area:Area2D):
+	head_sprite.play("idle")
+	print(area.get_groups())
+	if area.is_in_group("SideWall"):
+		self.move_dir = self.move_dir * -1
 
 
 func _on_animated_sprite_2d_animation_finished():

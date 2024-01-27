@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=22 format=3 uid="uid://uj6hcrskcqlb"]
 
 [ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Texture2D" uid="uid://dclw16bd4s4qa" path="res://assets/gfx/bg2.png" id="1_y4olj"]
 [ext_resource type="Script" path="res://drag_item.gd" id="2_t110e"]
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="3_trf0v"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
-[ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="5_eqecq"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="7_amta7"]
+[ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="5_eqecq"]
+[ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="5_tv5ot"]
+[ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
+[ext_resource type="AudioStream" uid="uid://7e1hgma8tk71" path="res://assets/music/ggj24_ragtime_1.mp3" id="8_imaj4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
 radius = 19.0
@@ -15,6 +18,14 @@ height = 64.0
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1lmf"]
 atlas = ExtResource("3_trf0v")
 region = Rect2(70, 41, 46, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhbv6"]
+atlas = ExtResource("3_trf0v")
+region = Rect2(122.38, 17.1914, 74.1747, 51.7823)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30rxl"]
+atlas = ExtResource("3_trf0v")
+region = Rect2(253.756, 12.3058, 73.7082, 58.7799)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf5mq"]
 size = Vector2(700, 46)
@@ -36,7 +47,7 @@ collision_mask = 61441
 input_pickable = true
 mass = 0.19
 
-[node name="Player" type="Sprite2D" parent="Foo"]
+[node name="PlayerSprite" type="Sprite2D" parent="Foo"]
 texture = ExtResource("1_8w1ey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foo"]
@@ -75,14 +86,26 @@ offset_right = 20.0
 offset_bottom = 80.0
 grow_horizontal = 2
 
-[node name="TextureRect2" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
+[node name="Bannaani" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_t1lmf")
 script = ExtResource("2_t110e")
 item_scene = ExtResource("4_7c4ff")
 
+[node name="Alasi" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_hhbv6")
+script = ExtResource("2_t110e")
+item_scene = ExtResource("5_tv5ot")
+
+[node name="Kannuuna" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_30rxl")
+script = ExtResource("2_t110e")
+item_scene = ExtResource("6_o0ui6")
+
 [node name="Player" parent="." instance=ExtResource("5_eqecq")]
-position = Vector2(112, 36)
+position = Vector2(46, 32)
 
 [node name="DragContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -158,3 +181,8 @@ metadata/_edit_lock_ = true
 position = Vector2(75, -14.6667)
 shape = SubResource("RectangleShape2D_ggdbf")
 metadata/_edit_lock_ = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_imaj4")
+volume_db = -23.892
+autoplay = true
