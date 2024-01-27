@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=24 format=3 uid="uid://uj6hcrskcqlb"]
 
 [ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Texture2D" uid="uid://dclw16bd4s4qa" path="res://assets/gfx/bg2.png" id="1_y4olj"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bghtigui03ibl" path="res://assets/gfx/script2.png" id="9_d2pou"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="10_e15uk"]
 [ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="11_2vpl3"]
-[ext_resource type="PackedScene" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
+[ext_resource type="PackedScene" uid="uid://dyfs1p1rhoibr" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
 [ext_resource type="Script" path="res://LaughMeter.gd" id="11_pairg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
@@ -87,6 +87,15 @@ size_flags_horizontal = 8
 texture = ExtResource("3_leb7l")
 expand_mode = 4
 
+[node name="TextureRect" type="TextureRect" parent="DragUI/ColorRect"]
+z_index = 1
+layout_mode = 2
+offset_left = 1.0
+offset_top = 126.0
+offset_right = 68.0
+offset_bottom = 555.0
+texture = ExtResource("9_d2pou")
+
 [node name="ItemContainer" type="VBoxContainer" parent="DragUI/ColorRect"]
 z_index = 1
 layout_mode = 1
@@ -116,15 +125,6 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_30rxl")
 script = ExtResource("2_t110e")
 item_scene = ExtResource("6_o0ui6")
-
-[node name="TextureRect" type="TextureRect" parent="DragUI"]
-z_index = 1
-layout_mode = 2
-offset_left = 25.0
-offset_top = 134.0
-offset_right = 92.0
-offset_bottom = 563.0
-texture = ExtResource("9_d2pou")
 
 [node name="Money" type="Label" parent="DragUI"]
 z_index = 1
