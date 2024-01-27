@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=22 format=3 uid="uid://uj6hcrskcqlb"]
 
 [ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Script" path="res://drag_item.gd" id="2_t110e"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="5_eqecq"]
 [ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="5_tv5ot"]
 [ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
+[ext_resource type="AudioStream" uid="uid://7e1hgma8tk71" path="res://assets/music/ggj24_ragtime_1.mp3" id="8_imaj4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
 radius = 19.0
@@ -236,3 +237,8 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall/Area2D"]
 position = Vector2(-3.5, 272)
 shape = SubResource("RectangleShape2D_lu0n2")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_imaj4")
+volume_db = -23.892
+autoplay = true
