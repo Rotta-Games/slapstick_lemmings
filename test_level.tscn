@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=20 format=3 uid="uid://uj6hcrskcqlb"]
 
 [ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Texture2D" uid="uid://dclw16bd4s4qa" path="res://assets/gfx/bg2.png" id="1_y4olj"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="7_amta7"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="10_e15uk"]
+[ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="11_2vpl3"]
 [ext_resource type="PackedScene" uid="uid://dyfs1p1rhoibr" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
@@ -27,6 +28,8 @@ region = Rect2(122.38, 17.1914, 74.1747, 51.7823)
 [sub_resource type="AtlasTexture" id="AtlasTexture_30rxl"]
 atlas = ExtResource("3_trf0v")
 region = Rect2(253.756, 12.3058, 73.7082, 58.7799)
+
+[sub_resource type="Theme" id="Theme_qbbol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf5mq"]
 size = Vector2(700, 46)
@@ -104,6 +107,19 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_30rxl")
 script = ExtResource("2_t110e")
 item_scene = ExtResource("6_o0ui6")
+
+[node name="Money" type="Label" parent="DragUI"]
+z_index = 1
+layout_mode = 0
+offset_left = 26.0
+offset_top = 16.0
+offset_right = 66.0
+offset_bottom = 39.0
+scale = Vector2(1.51999, 1)
+theme = SubResource("Theme_qbbol")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Player" parent="." instance=ExtResource("5_eqecq")]
 position = Vector2(46, 32)
@@ -198,3 +214,5 @@ offset_right = -2.0
 offset_bottom = 361.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="MoneyHandler" parent="." instance=ExtResource("11_2vpl3")]

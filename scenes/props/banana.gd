@@ -3,6 +3,9 @@ extends RigidBody2D
 @onready var player: Node2D = get_tree().get_nodes_in_group("Player")[0]
 @onready var collisionShape: CollisionShape2D = $PhysicsShape2D
 @onready var banana_area2d: Area2D = $CollisionBody
+@onready var money_handler: Node = get_tree().get_root().get_node("Node2D/MoneyHandler") 
+
+@export var price = 20
 
 var draggable = true
 
@@ -34,6 +37,11 @@ func _input(event):
 	if not draggable:
 		return
 	if event is InputEventMouseButton:
+		# Check that player has moneyz
+		if money_handler.money - price < 0:
+			queue_free()
+			return
+			
 		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			self.draggable = false
 			self.gravity_scale = 1
@@ -41,6 +49,7 @@ func _input(event):
 
 			var diff = mouse_pos - last_mouse_pos
 			apply_central_force(diff * 1000)
+			money_handler.substract(price)
 
 
 func _on_static_body_2d_body_entered(body):
