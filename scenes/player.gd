@@ -118,9 +118,11 @@ func _clamp_head_rotation():
 
 func _move_right(delta):
 	_move(delta, Direction.RIGHT)
+	_flip_transform(Direction.RIGHT)
 
 func _move_left(delta):
 	_move(delta, Direction.LEFT)
+	_flip_transform(Direction.LEFT)
 
 func _move(delta, dir : Direction):
 	body.apply_impulse(Vector2(-8 * dir, -8))
@@ -140,8 +142,10 @@ func _idle(delta):
 	right_leg.apply_impulse(Vector2(0, 10))
 
 func _flip_transform(dir):
-	for body_part in body_parts.get_children():
-		body_part.scale.x = dir
+	head.scale.x = dir
+	body.scale.x = dir
+	left_leg.scale.x = dir
+	right_leg.scale.x = dir
 
 
 func _flip_direction():
