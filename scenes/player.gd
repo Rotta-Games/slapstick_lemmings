@@ -131,3 +131,6 @@ func _on_side_wall_collider_area_entered(area:Area2D):
 
 func _on_animated_sprite_2d_animation_finished():
 	head_sprite.play("idle")
+
+func get_position_for_real():
+	return body.global_position
