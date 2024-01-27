@@ -67,7 +67,7 @@ func _trigger_dispose():
 	$Sprite2D.scale.y = 0.5
 	banana_area2d.set_collision_layer_value(11, false)
 	banana_area2d.set_collision_layer_value(12, false)
-	collisionShape.set_deferred('disabled', true)
+	#collisionShape.set_deferred('disabled', true)
 	
 	var player_position = player.get_position_for_real()
 	
