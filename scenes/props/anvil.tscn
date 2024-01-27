@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d078k3p4ef5wd"]
+[gd_scene load_steps=3 format=3 uid="uid://d078k3p4ef5wd"]
 
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="1_itmv4"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqiwt"]
-radius = 18.0095
-height = 61.9757
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uo83f"]
 atlas = ExtResource("1_itmv4")
@@ -13,13 +9,11 @@ region = Rect2(133, 24, 52, 36)
 [node name="Anvil" type="RigidBody2D"]
 collision_layer = 64
 collision_mask = 65
-mass = 0.3
+mass = 0.1
 gravity_scale = 2.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 0)
-rotation = 1.56032
-shape = SubResource("CapsuleShape2D_jqiwt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_uo83f")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-22, -14, -7, -2, -17, 15, 17, 14, 11, -4, 22, -15)
