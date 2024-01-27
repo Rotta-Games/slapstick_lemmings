@@ -6,6 +6,8 @@ extends RigidBody2D
 
 var is_destroyed = true
 
+func _ready():
+	add_to_group("Items")
 
 func _on_static_body_2d_body_entered(body):
 	if is_destroyed:

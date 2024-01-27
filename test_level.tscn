@@ -238,6 +238,7 @@ metadata/_edit_lock_ = true
 [node name="DragContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
 z_index = 2
+position = Vector2(-177, -178)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_e15uk")
@@ -273,7 +274,7 @@ text = "Laugh score
 label_settings = SubResource("LabelSettings_81ycc")
 
 [node name="EndPortal" parent="." instance=ExtResource("16_1wksq")]
-position = Vector2(792, 384)
+position = Vector2(465, 3)
 
 [node name="EndText" parent="." instance=ExtResource("16_xufr7")]
 visible = false

@@ -15,7 +15,11 @@ func show_end():
 	show()
 
 func reset_level():
-	print("lol")
 	hide()
 	get_tree().paused = false
-	current_scene.reset()
+	for item in get_tree().get_nodes_in_group("Items"):
+		item.queue_free()
+	get_tree().call_group("Items", "queue_free")
+	get_tree().reload_current_scene()
+
+
