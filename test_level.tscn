@@ -1,13 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=15 format=3 uid="uid://uj6hcrskcqlb"]
 
-[ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
+[ext_resource type="Texture2D" uid="uid://dmdrolaneupfy" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Script" path="res://drag_item.gd" id="2_t110e"]
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="3_trf0v"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
-[ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="5_eqecq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggdbf"]
-size = Vector2(150, 32)
+[ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="5_eqecq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
 radius = 19.0
@@ -17,24 +14,30 @@ height = 64.0
 atlas = ExtResource("3_trf0v")
 region = Rect2(70, 41, 46, 29)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pf5mq"]
+size = Vector2(150, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dad5"]
+size = Vector2(150, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggdbf"]
+size = Vector2(150, 32)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cqfld"]
+blend_mode = 1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d76dg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyrq0"]
+size = Vector2(20, 554)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwo5a"]
+size = Vector2(20, 554)
+
 [node name="Node2D" type="Node2D"]
 
-[node name="Floor" type="Polygon2D" parent="."]
-position = Vector2(0, 496)
-scale = Vector2(6.4, 1.5)
-color = Color(0.145098, 0.521569, 0.513726, 1)
-polygon = PackedVector2Array(0, 0, 150, 0, 150, 32, 0, 32)
-
-[node name="FloorBody" type="StaticBody2D" parent="Floor"]
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/FloorBody"]
-position = Vector2(75, 16)
-shape = SubResource("RectangleShape2D_ggdbf")
-metadata/_edit_lock_ = true
-
 [node name="Foo" type="RigidBody2D" parent="."]
-position = Vector2(381, 144)
+position = Vector2(480, 448)
 collision_mask = 61441
 input_pickable = true
 mass = 0.19
@@ -84,7 +87,106 @@ script = ExtResource("2_t110e")
 item_scene = ExtResource("4_7c4ff")
 
 [node name="Player" parent="." instance=ExtResource("5_eqecq")]
-position = Vector2(216, 424)
+position = Vector2(112, 36)
 
 [node name="DragContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="TopFloor" type="Polygon2D" parent="Walls"]
+position = Vector2(0, 93)
+scale = Vector2(5.17333, 0.59375)
+color = Color(0.145098, 0.521569, 0.513726, 1)
+polygon = PackedVector2Array(0, 0, 150, 0, 150, 16.5311, 150, 32, 74.6294, 32, 0, 32)
+
+[node name="FloorBody" type="StaticBody2D" parent="Walls/TopFloor"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopFloor/FloorBody"]
+position = Vector2(75, 16)
+shape = SubResource("RectangleShape2D_pf5mq")
+metadata/_edit_lock_ = true
+
+[node name="TopFloor2" type="Polygon2D" parent="Walls"]
+position = Vector2(120, 312)
+scale = Vector2(5.17333, 0.59375)
+color = Color(0.145098, 0.521569, 0.513726, 1)
+polygon = PackedVector2Array(0, 0, 150, 0, 150, 16.5311, 150, 32, 74.6294, 32, 0, 32)
+
+[node name="FloorBody" type="StaticBody2D" parent="Walls/TopFloor2"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopFloor2/FloorBody"]
+position = Vector2(75, 16)
+shape = SubResource("RectangleShape2D_3dad5")
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="Polygon2D" parent="Walls"]
+position = Vector2(0, 520)
+scale = Vector2(6.4, 0.75)
+color = Color(0.145098, 0.521569, 0.513726, 1)
+polygon = PackedVector2Array(0, 0, 150, 0, 150, 32, 0, 32)
+
+[node name="FloorBody" type="StaticBody2D" parent="Walls/Floor"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Floor/FloorBody"]
+position = Vector2(75, 16)
+shape = SubResource("RectangleShape2D_ggdbf")
+metadata/_edit_lock_ = true
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls"]
+material = SubResource("CanvasItemMaterial_cqfld")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/LeftWall"]
+position = Vector2(-9.43874, 544)
+rotation = 3.14159
+scale = Vector2(19.4055, -545)
+texture = SubResource("PlaceholderTexture2D_d76dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+position = Vector2(0, 267)
+shape = SubResource("RectangleShape2D_vyrq0")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/LeftWall"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 16.0
+offset_bottom = 544.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightWall" type="StaticBody2D" parent="Walls"]
+material = SubResource("CanvasItemMaterial_cqfld")
+position = Vector2(896, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/RightWall"]
+position = Vector2(-9.43874, 544)
+rotation = 3.14159
+scale = Vector2(19.4055, -545)
+texture = SubResource("PlaceholderTexture2D_d76dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
+position = Vector2(0, 267)
+shape = SubResource("RectangleShape2D_vwo5a")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/RightWall"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 16.0
+offset_bottom = 544.0
+grow_horizontal = 2
+grow_vertical = 2

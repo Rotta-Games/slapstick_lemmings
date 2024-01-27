@@ -24,6 +24,7 @@ func _process(delta):
 	
 func _fire():
 	var cb = cannonball_scene.instantiate()
+	print("TODO change owner to some container")
 	add_child(cb)
 	cb.position = cannonball_spawn_point.position
 	cb.apply_impulse(Vector2.from_angle(raycast.rotation + PI / 2) * FIRE_POWER)

@@ -9,4 +9,4 @@ func _process(delta):
 
 
 func _on_animation_player_animation_finished(anim_name):
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
