@@ -1,8 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvjtik7bc6gmv"]
+[gd_scene load_steps=37 format=3 uid="uid://djsog7ytd4f33"]
 
-[ext_resource type="Texture2D" uid="uid://bojhg81f3vvng" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
+[ext_resource type="Texture2D" uid="uid://b0t30l36sshut" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ydejx"]
-[ext_resource type="Texture2D" uid="uid://c6efj3q2hq5us" path="res://assets/gfx/player-faces-shieet.png" id="2_wctdu"]
+[ext_resource type="Texture2D" uid="uid://dg18f6c6af1wg" path="res://assets/gfx/player-faces-shieet.png" id="2_wctdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mctt"]
 size = Vector2(16.5, 16)
@@ -252,6 +252,9 @@ size = Vector2(17, 22)
 atlas = ExtResource("1_xcw6x")
 region = Rect2(20, 282, 24, 26)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qbbq"]
+size = Vector2(35, 47)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ojdi"]
 radius = 2.0
 height = 21.2603
@@ -329,6 +332,15 @@ shape = SubResource("RectangleShape2D_ldm6s")
 texture = SubResource("AtlasTexture_8jqld")
 
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="BodyParts/Body"]
+
+[node name="PropDetectorArea2D" type="Area2D" parent="BodyParts/Body"]
+position = Vector2(-1, -28)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/Body/PropDetectorArea2D"]
+position = Vector2(0.5, 13.5)
+shape = SubResource("RectangleShape2D_8qbbq")
 
 [node name="LeftHand" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 position = Vector2(14, 28)
@@ -439,3 +451,4 @@ collision_mask = 5
 
 [connection signal="animation_finished" from="BodyParts/Head/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="screen_exited" from="BodyParts/Body/VisibilityNotifier" to="." method="_mihin_meni_pedro_tuu_takas"]
+[connection signal="body_entered" from="BodyParts/Body/PropDetectorArea2D" to="." method="_on_prop_detector_area_2d_body_entered"]

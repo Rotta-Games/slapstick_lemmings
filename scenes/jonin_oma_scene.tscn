@@ -35,9 +35,8 @@ region_enabled = true
 region_rect = Rect2(0, 0, 500, 10)
 
 [node name="Cannon" parent="." instance=ExtResource("4_862k1")]
-position = Vector2(397, 292)
+position = Vector2(240, 284)
 
 [node name="PieMaster" parent="." instance=ExtResource("5_3uaf0")]
 position = Vector2(32, 274)
 FIRE_POWER = 500.0
-FIRE_DELAY_MAX = 3.0

@@ -13,7 +13,7 @@ extends Node2D
 
 var last_pos
 var last_rotation
-var slide_score = 0
+var hit_score = 0
 
 const face_anims = ["anim_1", "anim_2", "anim_3", "anim_4", "anim_5"]
 
@@ -22,6 +22,7 @@ var move_dir: Direction = Direction.RIGHT
 
 
 const SLIP_FORCE = Vector2(120, -200)
+const PIE_FORCE = Vector2(-120, 100)
 const SLIP_TORQUE = -5000.0
 
 var no_physics_timer = 0.0
@@ -49,7 +50,18 @@ func slide_n_slip():
 		part.apply_torque_impulse(SLIP_TORQUE * dir)
 	_for_each_body_part(apply_torq)
 	_disable_physics(NO_PHYSICS_DELAY)
-	slide_score += 100
+	hit_score += 100
+	
+func _pie_hit():
+	# please kill me
+	_play_random_face_anim()
+	var body_velocity = body.linear_velocity
+	var dir = Direction.LEFT if body_velocity.x < 0 else Direction.RIGHT
+	body.apply_impulse(Vector2(PIE_FORCE.x * dir, PIE_FORCE.y))
+	head.apply_impulse(Vector2(PIE_FORCE.x * dir * -1, PIE_FORCE.y * -0.5))
+	_disable_physics(NO_PHYSICS_DELAY / 2)
+	hit_score += 100
+
 
 func _disable_physics(_time):
 	no_physics_timer = NO_PHYSICS_DELAY
@@ -90,12 +102,12 @@ func _physics_process(delta):
 		_idle(delta)
 		
 func _update_score():
-	var score_up = slide_score
+	var score_up = hit_score
 	score_up += (max(0, abs(body.rotation_degrees - last_rotation) - 10))
 	score_up += (max(0, abs(body.global_position.x - last_pos.x) - 5))
 	score_up += (max(0, abs(body.global_position.y - last_pos.y) - 5))
 	Global.score += score_up
-	slide_score = 0
+	hit_score = 0
 
 func _update_raycast_pos():
 	floor_raycast.position = body.position
@@ -158,4 +170,8 @@ func get_position_for_real():
 
 func _mihin_meni_pedro_tuu_takas():
 	pass
+
+func _on_prop_detector_area_2d_body_entered(body):
+	if body.is_in_group("Pie"):
+		_pie_hit()
 
