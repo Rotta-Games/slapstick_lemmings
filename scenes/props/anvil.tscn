@@ -11,6 +11,8 @@ atlas = ExtResource("1_itmv4")
 region = Rect2(133, 24, 52, 36)
 
 [node name="Anvil" type="RigidBody2D"]
+collision_layer = 65
+collision_mask = 65
 mass = 0.5
 gravity_scale = 2.0
 
