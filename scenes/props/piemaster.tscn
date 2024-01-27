@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b41ugy4p4bd5b"]
+[gd_scene load_steps=10 format=3 uid="uid://cydjsftkpev4n"]
 
 [ext_resource type="Script" path="res://scenes/props/piemaster.gd" id="1_27m2o"]
-[ext_resource type="Texture2D" uid="uid://cl3xycete30y7" path="res://assets/gfx/stem_boot_willy.png" id="2_mcw7f"]
+[ext_resource type="Texture2D" uid="uid://bavw3phktgm06" path="res://assets/gfx/stem_boot_willy.png" id="2_mcw7f"]
 [ext_resource type="AudioStream" uid="uid://1cs07gijikj6" path="res://assets/sfx/cannon.mp3" id="3_tr31v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3gds"]
@@ -52,7 +52,6 @@ size = Vector2(30, 61)
 collision_layer = 64
 collision_mask = 65
 script = ExtResource("1_27m2o")
-FIRE_POWER = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -9)

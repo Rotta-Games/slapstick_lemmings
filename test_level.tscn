@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=31 format=3 uid="uid://uj6hcrskcqlb"]
 
 [ext_resource type="Script" path="res://scripts/level_handler.gd" id="1_2e6lw"]
 [ext_resource type="Texture2D" uid="uid://dclw16bd4s4qa" path="res://assets/gfx/bg2.png" id="1_y4olj"]
@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="7_amta7"]
 [ext_resource type="Texture2D" uid="uid://bghtigui03ibl" path="res://assets/gfx/script2.png" id="9_d2pou"]
+[ext_resource type="Texture2D" uid="uid://bavw3phktgm06" path="res://assets/gfx/stem_boot_willy.png" id="10_8y83n"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="10_e15uk"]
+[ext_resource type="PackedScene" uid="uid://cydjsftkpev4n" path="res://scenes/props/piemaster.tscn" id="10_rpwou"]
 [ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="11_2vpl3"]
 [ext_resource type="PackedScene" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
 [ext_resource type="Script" path="res://LaughMeter.gd" id="11_pairg"]
@@ -29,6 +31,10 @@ region = Rect2(122.38, 17.1914, 74.1747, 51.7823)
 [sub_resource type="AtlasTexture" id="AtlasTexture_30rxl"]
 atlas = ExtResource("3_trf0v")
 region = Rect2(253.756, 12.3058, 73.7082, 58.7799)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtqui"]
+atlas = ExtResource("10_8y83n")
+region = Rect2(0.54834, -0.4533, 62.6053, 64.6379)
 
 [sub_resource type="Theme" id="Theme_qbbol"]
 
@@ -123,6 +129,13 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_30rxl")
 script = ExtResource("2_t110e")
 item_scene = ExtResource("6_o0ui6")
+price = 40
+
+[node name="PiirakkaMestari" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jtqui")
+script = ExtResource("2_t110e")
+item_scene = ExtResource("10_rpwou")
 price = 40
 
 [node name="Money" type="Label" parent="DragUI"]
