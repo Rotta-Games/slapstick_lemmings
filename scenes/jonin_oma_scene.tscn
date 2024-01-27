@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="1_5otn2"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="2_5f3d0"]
-[ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="3_dh35f"]
 [ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="4_862k1"]
+[ext_resource type="PackedScene" uid="uid://b41ugy4p4bd5b" path="res://scenes/props/piemaster.tscn" id="5_3uaf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nucog"]
 size = Vector2(501, 57)
@@ -13,14 +13,10 @@ size = Vector2(501, 57)
 [node name="JoninOmaScene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5otn2")]
-position = Vector2(73, 234)
+position = Vector2(168, 243)
 
 [node name="Banana" parent="." instance=ExtResource("2_5f3d0")]
 position = Vector2(315, 201)
-
-[node name="Anvil" parent="." instance=ExtResource("3_dh35f")]
-position = Vector2(55, -49)
-gravity_scale = 1.0
 
 [node name="Lattia" type="Node2D" parent="."]
 position = Vector2(252, 316)
@@ -40,3 +36,8 @@ region_rect = Rect2(0, 0, 500, 10)
 
 [node name="Cannon" parent="." instance=ExtResource("4_862k1")]
 position = Vector2(397, 292)
+
+[node name="PieMaster" parent="." instance=ExtResource("5_3uaf0")]
+position = Vector2(32, 274)
+FIRE_POWER = 500.0
+FIRE_DELAY_MAX = 3.0

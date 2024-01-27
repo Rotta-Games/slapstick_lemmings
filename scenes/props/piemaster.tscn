@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://b41ugy4p4bd5b"]
+
+[ext_resource type="Script" path="res://scenes/props/piemaster.gd" id="1_27m2o"]
+[ext_resource type="Texture2D" uid="uid://cl3xycete30y7" path="res://assets/gfx/stem_boot_willy.png" id="2_mcw7f"]
+[ext_resource type="AudioStream" uid="uid://1cs07gijikj6" path="res://assets/sfx/cannon.mp3" id="3_tr31v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3gds"]
+atlas = ExtResource("2_mcw7f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ffsa"]
+atlas = ExtResource("2_mcw7f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dehs7"]
+atlas = ExtResource("2_mcw7f")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w07rx"]
+atlas = ExtResource("2_mcw7f")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27ybp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3gds")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ffsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dehs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w07rx")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iy0bb"]
+size = Vector2(30, 61)
+
+[node name="PieMaster" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 65
+script = ExtResource("1_27m2o")
+FIRE_POWER = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -9)
+sprite_frames = SubResource("SpriteFrames_27ybp")
+animation = &"shoot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -9.5)
+shape = SubResource("RectangleShape2D_iy0bb")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -0.619592
+target_position = Vector2(30, 0)
+
+[node name="PieSpawnPoint" type="Node2D" parent="."]
+position = Vector2(-15, -34)
+
+[node name="FireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_tr31v")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://pa7jwoo6o0ym"]
+
+[ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="1_qpome"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hchrw"]
+atlas = ExtResource("1_qpome")
+region = Rect2(204, 32, 40, 27)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ibbg"]
+radius = 12.0
+height = 38.0
+
+[node name="Pie" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 0
+mass = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.18857
+texture = SubResource("AtlasTexture_hchrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -0.382227
+shape = SubResource("CapsuleShape2D_6ibbg")

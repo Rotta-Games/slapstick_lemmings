@@ -1,24 +1,22 @@
-[gd_scene load_steps=24 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=28 format=3 uid="uid://uj6hcrskcqlb"]
 
-[ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
+[ext_resource type="Script" path="res://scripts/level_handler.gd" id="1_2e6lw"]
 [ext_resource type="Texture2D" uid="uid://dclw16bd4s4qa" path="res://assets/gfx/bg2.png" id="1_y4olj"]
 [ext_resource type="Script" path="res://drag_item.gd" id="2_t110e"]
 [ext_resource type="Texture2D" uid="uid://bq4yi72pf8pjx" path="res://assets/gfx/script.png" id="3_leb7l"]
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="3_trf0v"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
-[ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="5_eqecq"]
+[ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="5_eqecq"]
 [ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="5_tv5ot"]
-[ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
+[ext_resource type="PackedScene" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="7_amta7"]
 [ext_resource type="Texture2D" uid="uid://bghtigui03ibl" path="res://assets/gfx/script2.png" id="9_d2pou"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="10_e15uk"]
 [ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="11_2vpl3"]
-[ext_resource type="PackedScene" uid="uid://dyfs1p1rhoibr" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
+[ext_resource type="PackedScene" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
 [ext_resource type="Script" path="res://LaughMeter.gd" id="11_pairg"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
-radius = 19.0
-height = 64.0
+[ext_resource type="PackedScene" uid="uid://cqgtk4u0ii3ea" path="res://scenes/utils/end_portal.tscn" id="16_1wksq"]
+[ext_resource type="PackedScene" uid="uid://1ilalqgy567b" path="res://scenes/utils/end_text.tscn" id="16_xufr7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1lmf"]
 atlas = ExtResource("3_trf0v")
@@ -34,8 +32,17 @@ region = Rect2(253.756, 12.3058, 73.7082, 58.7799)
 
 [sub_resource type="Theme" id="Theme_qbbol"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giw7m"]
+size = Vector2(689, 44.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mneii"]
+size = Vector2(689, 44.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf5mq"]
-size = Vector2(700, 46)
+size = Vector2(700, 249.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyia4"]
+size = Vector2(653, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggdbf"]
 size = Vector2(150, 93.3334)
@@ -44,24 +51,14 @@ size = Vector2(150, 93.3334)
 font_size = 10
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_2e6lw")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_top = -1.0
 offset_right = 959.0
 offset_bottom = 544.0
 texture = ExtResource("1_y4olj")
-
-[node name="Foo" type="RigidBody2D" parent="."]
-position = Vector2(480, 448)
-collision_mask = 61441
-input_pickable = true
-mass = 0.19
-
-[node name="PlayerSprite" type="Sprite2D" parent="Foo"]
-texture = ExtResource("1_8w1ey")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Foo"]
-shape = SubResource("CapsuleShape2D_tc0ts")
+metadata/_edit_lock_ = true
 
 [node name="DragUI" type="Control" parent="."]
 layout_mode = 3
@@ -119,12 +116,14 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_hhbv6")
 script = ExtResource("2_t110e")
 item_scene = ExtResource("5_tv5ot")
+price = 30
 
 [node name="Kannuuna" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_30rxl")
 script = ExtResource("2_t110e")
 item_scene = ExtResource("6_o0ui6")
+price = 40
 
 [node name="Money" type="Label" parent="DragUI"]
 z_index = 1
@@ -151,11 +150,24 @@ texture = ExtResource("7_amta7")
 polygon = PackedVector2Array(0, 0, 700, 0, 700, 45, 700, 45, 74.629, 45, 0, 45)
 
 [node name="FloorBody" type="StaticBody2D" parent="Walls/TopFloor"]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopFloor/FloorBody"]
-position = Vector2(350, 23)
-shape = SubResource("RectangleShape2D_pf5mq")
+position = Vector2(356.5, 22.75)
+shape = SubResource("RectangleShape2D_giw7m")
+metadata/_edit_lock_ = true
+
+[node name="Roof" type="Polygon2D" parent="Walls"]
+texture_repeat = 2
+position = Vector2(11, -48)
+scale = Vector2(1.26, 1)
+texture = ExtResource("7_amta7")
+polygon = PackedVector2Array(0, 0, 700, 0, 700, 23.2038, 700, 45, 700, 45, 74.629, 45, 0, 45)
+
+[node name="RoofBody" type="StaticBody2D" parent="Walls/Roof"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Roof/RoofBody"]
+position = Vector2(356.5, 22.75)
+shape = SubResource("RectangleShape2D_mneii")
 metadata/_edit_lock_ = true
 
 [node name="LeftWall" type="Polygon2D" parent="Walls"]
@@ -166,14 +178,13 @@ texture = ExtResource("7_amta7")
 polygon = PackedVector2Array(0, 0, 700, 0, 700, 23, 700, 45, 700, 45, 74.629, 45, 0, 45)
 
 [node name="FloorBody" type="StaticBody2D" parent="Walls/LeftWall"]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall/FloorBody"]
-position = Vector2(350, 23)
+position = Vector2(351, -79.9987)
 shape = SubResource("RectangleShape2D_pf5mq")
 metadata/_edit_lock_ = true
 
-[node name="LeftWall2" type="Polygon2D" parent="Walls"]
+[node name="RightWall" type="Polygon2D" parent="Walls"]
 z_index = 1
 texture_repeat = 2
 position = Vector2(851, 552)
@@ -182,11 +193,10 @@ texture = ExtResource("7_amta7")
 texture_scale = Vector2(-1, -1)
 polygon = PackedVector2Array(0, 0, 700, 0, 700, 23, 700, 45, 700, 45, 74.629, 45, 0, 45)
 
-[node name="FloorBody" type="StaticBody2D" parent="Walls/LeftWall2"]
-metadata/_edit_lock_ = true
+[node name="FloorBody" type="StaticBody2D" parent="Walls/RightWall"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall2/FloorBody"]
-position = Vector2(350, 23)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall/FloorBody"]
+position = Vector2(352, 124.126)
 shape = SubResource("RectangleShape2D_pf5mq")
 metadata/_edit_lock_ = true
 
@@ -197,17 +207,15 @@ texture = ExtResource("7_amta7")
 polygon = PackedVector2Array(0, 0, 700, 0, 700, 45, 700, 45, 74.629, 45, 0, 45)
 
 [node name="FloorBody" type="StaticBody2D" parent="Walls/BottomFloor"]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomFloor/FloorBody"]
-position = Vector2(350, 23)
-shape = SubResource("RectangleShape2D_pf5mq")
+position = Vector2(324.5, 22)
+shape = SubResource("RectangleShape2D_pyia4")
 metadata/_edit_lock_ = true
 
 [node name="FloorBody" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 520)
 scale = Vector2(6.4, 0.75)
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/FloorBody"]
 position = Vector2(75, -14.6667)
@@ -235,6 +243,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="MoneyHandler" parent="." instance=ExtResource("11_2vpl3")]
+initial_player_money = 240
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -249,3 +258,11 @@ offset_bottom = 519.0
 text = "Laugh score
 "
 label_settings = SubResource("LabelSettings_81ycc")
+
+[node name="EndPortal" parent="." instance=ExtResource("16_1wksq")]
+position = Vector2(792, 384)
+
+[node name="EndText" parent="." instance=ExtResource("16_xufr7")]
+visible = false
+z_index = 5
+z_as_relative = false

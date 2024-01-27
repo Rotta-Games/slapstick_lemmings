@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfaiung2qkht4"]
+[gd_scene load_steps=9 format=3 uid="uid://cfaiung2qkht4"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_2wlp3"]
 [ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="2_50ohi"]
 [ext_resource type="Texture2D" uid="uid://bw0gypfq4v64i" path="res://assets/gfx/bg.png" id="3_oge1y"]
 [ext_resource type="FontFile" uid="uid://dh7nj4hmaphn4" path="res://assets/fonts/m5x7.ttf" id="3_rfbr6"]
 [ext_resource type="Texture2D" uid="uid://c3tttalllje6t" path="res://assets/gfx/logo.png" id="5_emx5h"]
+[ext_resource type="AudioStream" uid="uid://j6f0ny837clc" path="res://assets/music/ggj24_3.1.mp3" id="6_iqr17"]
 [ext_resource type="Shader" path="res://scripts/wavy_text.gdshader" id="6_l10os"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vpkvm"]
@@ -92,3 +93,8 @@ SILLY
 [/color]"
 scroll_active = false
 autowrap_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_iqr17")
+volume_db = -11.712
+autoplay = true
