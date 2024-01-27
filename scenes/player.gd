@@ -12,10 +12,11 @@ extends Node2D
 
 const face_anims = ["anim_1", "anim_2", "anim_3", "anim_4", "anim_5"]
 
-var move_right : bool = false
-var move_left : bool = false
+@onready var wall_collider = $SideWallCollider
 
-enum Direction{LEFT = -1, RIGHT = 1}
+enum Direction{LEFT = -1, RIGHT = 1, NOPE = 0}
+var move_dir: Direction = Direction.RIGHT
+
 
 const SLIP_FORCE = Vector2(120, -200)
 const SLIP_TORQUE = -5000.0
@@ -55,23 +56,21 @@ func _for_each_body_part(cb):
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_D:
-			move_right = true
-			move_left = false
+			self.move_dir = Direction.RIGHT
 		elif event.pressed and event.keycode == KEY_A:
-			move_left = true
-			move_right = false
+			self.move_dir = Direction.LEFT
 		else:
-			move_left = false
-			move_right = false
-			
+			self.move_dir = Direction.NOPE
+
+
 func _physics_process(delta):
+	self.wall_collider.position = self.body.position - Vector2(0, 10)
 	if no_physics_timer > 0.0:
 		no_physics_timer -= delta
 		return
-		
-	if move_right:
+	if self.move_dir == Direction.RIGHT:
 		_move_right(delta)
-	elif move_left:
+	elif self.move_dir == Direction.LEFT:
 		_move_left(delta)
 	else:
 		_idle(delta)
@@ -116,5 +115,8 @@ func _flip(value):
 		body_part.scale.x = -1 if value else 1
 
 
-func _on_animated_sprite_2d_animation_finished():
+func _on_side_wall_collider_area_entered(area:Area2D):
 	head_sprite.play("idle")
+	print(area.get_groups())
+	if area.is_in_group("SideWall"):
+		self.move_dir = self.move_dir * -1

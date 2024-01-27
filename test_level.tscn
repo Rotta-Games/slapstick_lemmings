@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=17 format=3 uid="uid://uj6hcrskcqlb"]
 
-[ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
+[ext_resource type="Texture2D" uid="uid://dmdrolaneupfy" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Script" path="res://drag_item.gd" id="2_t110e"]
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="3_trf0v"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
-[ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="5_eqecq"]
+[ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="5_eqecq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
 radius = 19.0
@@ -31,8 +31,14 @@ blend_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyrq0"]
 size = Vector2(20, 554)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r7j0"]
+size = Vector2(22, 544)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwo5a"]
-size = Vector2(20, 554)
+size = Vector2(20, 544)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lu0n2"]
+size = Vector2(27, 544)
 
 [node name="Node2D" type="Node2D"]
 
@@ -42,7 +48,7 @@ collision_mask = 61441
 input_pickable = true
 mass = 0.19
 
-[node name="Player" type="Sprite2D" parent="Foo"]
+[node name="PlayerSprite" type="Sprite2D" parent="Foo"]
 texture = ExtResource("1_8w1ey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foo"]
@@ -87,7 +93,7 @@ script = ExtResource("2_t110e")
 item_scene = ExtResource("4_7c4ff")
 
 [node name="Player" parent="." instance=ExtResource("5_eqecq")]
-position = Vector2(112, 36)
+position = Vector2(46, 32)
 
 [node name="DragContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -163,6 +169,15 @@ offset_bottom = 544.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Area2D" type="Area2D" parent="Walls/LeftWall" groups=["SideWall"]]
+position = Vector2(2, -4)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall/Area2D"]
+position = Vector2(-1, 272)
+shape = SubResource("RectangleShape2D_2r7j0")
+
 [node name="RightWall" type="StaticBody2D" parent="Walls"]
 material = SubResource("CanvasItemMaterial_cqfld")
 position = Vector2(896, 0)
@@ -174,7 +189,7 @@ scale = Vector2(19.4055, -545)
 texture = SubResource("PlaceholderTexture2D_d76dg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
-position = Vector2(0, 267)
+position = Vector2(0, 272)
 shape = SubResource("RectangleShape2D_vwo5a")
 
 [node name="ColorRect" type="ColorRect" parent="Walls/RightWall"]
@@ -190,3 +205,12 @@ offset_right = 16.0
 offset_bottom = 544.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="Walls/RightWall" groups=["SideWall"]]
+position = Vector2(1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall/Area2D"]
+position = Vector2(-3.5, 272)
+shape = SubResource("RectangleShape2D_lu0n2")
