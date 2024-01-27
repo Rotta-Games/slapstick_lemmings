@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=22 format=3 uid="uid://uj6hcrskcqlb"]
 
 [ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Texture2D" uid="uid://dclw16bd4s4qa" path="res://assets/gfx/bg2.png" id="1_y4olj"]
@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
 [ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="5_eqecq"]
 [ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="5_tv5ot"]
-[ext_resource type="PackedScene" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
+[ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="7_amta7"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="10_e15uk"]
 [ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="11_2vpl3"]
-[ext_resource type="PackedScene" uid="uid://dyfs1p1rhoibr" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
+[ext_resource type="PackedScene" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
+[ext_resource type="Script" path="res://LaughMeter.gd" id="11_pairg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
 radius = 19.0
@@ -36,6 +37,9 @@ size = Vector2(700, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggdbf"]
 size = Vector2(150, 93.3334)
+
+[sub_resource type="LabelSettings" id="LabelSettings_81ycc"]
+font_size = 10
 
 [node name="Node2D" type="Node2D"]
 
@@ -217,3 +221,17 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="MoneyHandler" parent="." instance=ExtResource("11_2vpl3")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LaughMeter" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("11_pairg")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/LaughMeter"]
+offset_left = 899.0
+offset_top = 496.0
+offset_right = 1014.0
+offset_bottom = 519.0
+text = "Laugh score
+"
+label_settings = SubResource("LabelSettings_81ycc")
