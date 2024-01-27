@@ -1,14 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=22 format=3 uid="uid://uj6hcrskcqlb"]
 
 [ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Texture2D" uid="uid://dclw16bd4s4qa" path="res://assets/gfx/bg2.png" id="1_y4olj"]
 [ext_resource type="Script" path="res://drag_item.gd" id="2_t110e"]
+[ext_resource type="Texture2D" uid="uid://bq4yi72pf8pjx" path="res://assets/gfx/script.png" id="3_leb7l"]
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="3_trf0v"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
 [ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="5_eqecq"]
 [ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="5_tv5ot"]
 [ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="7_amta7"]
+[ext_resource type="Texture2D" uid="uid://bghtigui03ibl" path="res://assets/gfx/script2.png" id="9_d2pou"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="10_e15uk"]
 [ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="11_2vpl3"]
 [ext_resource type="PackedScene" uid="uid://dyfs1p1rhoibr" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
@@ -65,8 +67,9 @@ offset_top = -8.0
 offset_right = 912.0
 offset_bottom = 32.0
 
-[node name="ColorRect" type="ColorRect" parent="DragUI"]
+[node name="ColorRect" type="TextureRect" parent="DragUI"]
 z_index = 1
+texture_repeat = 2
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -74,20 +77,22 @@ anchor_right = 1.0
 offset_left = -16.0
 offset_top = 8.0
 offset_right = 48.0
-offset_bottom = 544.0
+offset_bottom = 134.0
 grow_horizontal = 0
 size_flags_horizontal = 8
-color = Color(0.227451, 0.603922, 0.662745, 1)
+texture = ExtResource("3_leb7l")
+expand_mode = 4
 
 [node name="ItemContainer" type="VBoxContainer" parent="DragUI/ColorRect"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
+offset_left = -37.0
 offset_top = 40.0
-offset_right = 20.0
-offset_bottom = 80.0
+offset_right = 37.0
+offset_bottom = 186.0
 grow_horizontal = 2
 
 [node name="Bannaani" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
@@ -107,6 +112,15 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_30rxl")
 script = ExtResource("2_t110e")
 item_scene = ExtResource("6_o0ui6")
+
+[node name="TextureRect" type="TextureRect" parent="DragUI"]
+z_index = 1
+layout_mode = 2
+offset_left = 25.0
+offset_top = 134.0
+offset_right = 92.0
+offset_bottom = 563.0
+texture = ExtResource("9_d2pou")
 
 [node name="Money" type="Label" parent="DragUI"]
 z_index = 1
