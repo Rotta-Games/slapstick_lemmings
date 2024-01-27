@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=9 format=3 uid="uid://uj6hcrskcqlb"]
 
 [ext_resource type="Texture2D" uid="uid://dmdrolaneupfy" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Script" path="res://drag_item.gd" id="2_t110e"]
+[ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="3_trf0v"]
+[ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
+[ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="5_eqecq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggdbf"]
 size = Vector2(150, 32)
@@ -9,6 +12,10 @@ size = Vector2(150, 32)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
 radius = 19.0
 height = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1lmf"]
+atlas = ExtResource("3_trf0v")
+region = Rect2(70, 41, 46, 29)
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,7 +35,9 @@ metadata/_edit_lock_ = true
 
 [node name="Foo" type="RigidBody2D" parent="."]
 position = Vector2(381, 144)
+collision_mask = 61441
 input_pickable = true
+mass = 0.19
 
 [node name="Player" type="Sprite2D" parent="Foo"]
 texture = ExtResource("1_8w1ey")
@@ -68,22 +77,14 @@ offset_right = 20.0
 offset_bottom = 80.0
 grow_horizontal = 2
 
-[node name="TextureRect" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
-layout_mode = 2
-texture = ExtResource("1_8w1ey")
-script = ExtResource("2_t110e")
-
 [node name="TextureRect2" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
 layout_mode = 2
-texture = ExtResource("1_8w1ey")
+texture = SubResource("AtlasTexture_t1lmf")
+script = ExtResource("2_t110e")
+item_scene = ExtResource("4_7c4ff")
 
-[node name="TextureRect3" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
-layout_mode = 2
-texture = ExtResource("1_8w1ey")
-
-[node name="TextureRect4" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
-layout_mode = 2
-texture = ExtResource("1_8w1ey")
+[node name="Player" parent="." instance=ExtResource("5_eqecq")]
+position = Vector2(216, 424)
 
 [node name="DragContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
