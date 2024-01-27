@@ -29,6 +29,18 @@ window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[layer_names]
+
+2d_physics/layer_1="WALLS_FLOORS"
+2d_physics/layer_2="FLOOR_PROPS"
+2d_physics/layer_10="HAT"
+2d_physics/layer_11="RIGHT_LEG"
+2d_physics/layer_12="LEFT_LEG"
+2d_physics/layer_13="RIGHT_HAND"
+2d_physics/layer_14="LEFT_HAND"
+2d_physics/layer_15="BODY"
+2d_physics/layer_16="HEAD"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

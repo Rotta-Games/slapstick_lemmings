@@ -136,6 +136,7 @@ texture = SubResource("AtlasTexture_8jqld")
 [node name="LeftHand" type="RigidBody2D" parent="BodyParts"]
 position = Vector2(14, 28)
 collision_layer = 8192
+collision_mask = 32769
 mass = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/LeftHand"]
@@ -150,6 +151,7 @@ texture = SubResource("AtlasTexture_k1rwc")
 z_index = 2
 position = Vector2(-10, 28)
 collision_layer = 4096
+collision_mask = 32769
 mass = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/RightHand"]
@@ -162,7 +164,8 @@ texture = SubResource("AtlasTexture_d0ck5")
 [node name="LeftLeg" type="RigidBody2D" parent="BodyParts"]
 position = Vector2(13, 41)
 rotation = -1.07687
-collision_layer = 8192
+collision_layer = 2048
+collision_mask = 3
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 15)
 
@@ -176,7 +179,8 @@ texture = SubResource("AtlasTexture_ip4ap")
 z_index = 2
 position = Vector2(-6, 45)
 rotation = 0.598648
-collision_layer = 4096
+collision_layer = 1024
+collision_mask = 3
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 15)
 
@@ -189,8 +193,8 @@ texture = SubResource("AtlasTexture_7mos2")
 [node name="Hat" type="RigidBody2D" parent="BodyParts"]
 z_index = 1
 position = Vector2(0, -8)
-collision_layer = 32768
-collision_mask = 32769
+collision_layer = 512
+collision_mask = 32768
 mass = 0.2
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 10)
