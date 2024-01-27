@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://djutimjaa1vx1"]
+[gd_scene load_steps=6 format=3 uid="uid://djutimjaa1vx1"]
 
 [ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="1_5otn2"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="2_5f3d0"]
+[ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="3_dh35f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nucog"]
-size = Vector2(501, 10)
+size = Vector2(501, 57)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wg504"]
 
@@ -16,10 +17,12 @@ position = Vector2(252, 170)
 [node name="StaticBody2D" type="StaticBody2D" parent="Lattia"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lattia/StaticBody2D"]
-position = Vector2(0, 1)
+position = Vector2(0, 24.5)
 shape = SubResource("RectangleShape2D_nucog")
 
 [node name="Sprite2D" type="Sprite2D" parent="Lattia"]
+position = Vector2(0, 24.5)
+scale = Vector2(1, 5.9)
 texture = SubResource("PlaceholderTexture2D_wg504")
 region_enabled = true
 region_rect = Rect2(0, 0, 500, 10)
@@ -29,3 +32,6 @@ position = Vector2(73, 106)
 
 [node name="Banana" parent="." instance=ExtResource("2_5f3d0")]
 position = Vector2(219, 157)
+
+[node name="Anvil" parent="." instance=ExtResource("3_dh35f")]
+position = Vector2(73, -49)
