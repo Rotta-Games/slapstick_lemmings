@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbsjkjyg6w0sk"]
 
-[ext_resource type="Texture2D" uid="uid://di0f4kpenijgb" path="res://assets/gfx/gamee.png" id="1_sftpe"]
-[ext_resource type="Script" path="res://splash.gd" id="1_tpof6"]
-[ext_resource type="AudioStream" uid="uid://ksl126xb0xru" path="res://assets/sfx/gamee_boom.mp3" id="3_spc48"]
+[ext_resource type="Script" path="res://scenes/splash.gd" id="1_8k81l"]
+[ext_resource type="Texture2D" uid="uid://di0f4kpenijgb" path="res://assets/gfx/gamee.png" id="2_m3220"]
+[ext_resource type="AudioStream" uid="uid://ksl126xb0xru" path="res://assets/sfx/gamee_boom.mp3" id="3_t02ui"]
 
 [sub_resource type="Animation" id="Animation_qkeem"]
 length = 0.001
@@ -42,12 +42,12 @@ _data = {
 }
 
 [node name="splash" type="Node2D"]
-script = ExtResource("1_tpof6")
+script = ExtResource("1_8k81l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.505556, 0.505556)
-texture = ExtResource("1_sftpe")
+texture = ExtResource("2_m3220")
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -57,7 +57,7 @@ libraries = {
 autoplay = "fade_inout"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_spc48")
+stream = ExtResource("3_t02ui")
 volume_db = -5.153
 autoplay = true
 

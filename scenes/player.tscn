@@ -1,0 +1,206 @@
+[gd_scene load_steps=14 format=3 uid="uid://djsog7ytd4f33"]
+
+[ext_resource type="Texture2D" uid="uid://b0t30l36sshut" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_ydejx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mctt"]
+size = Vector2(16.5, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjpwo"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(20, 329, 24, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldm6s"]
+size = Vector2(17, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jqld"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(20, 282, 24, 26)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ojdi"]
+radius = 2.0
+height = 21.2603
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1rwc"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(36, 31, 19, 19)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ltmb"]
+radius = 3.16142
+height = 21.4682
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ck5"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(13, 92, 13, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip4ap"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(23, 240, 13, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mos2"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(32, 176, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih63x"]
+atlas = ExtResource("1_xcw6x")
+region = Rect2(20, 386, 22, 14)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_ydejx")
+
+[node name="Joints" type="Node2D" parent="."]
+
+[node name="HeadJoint" type="PinJoint2D" parent="Joints"]
+position = Vector2(1, 16)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("../../BodyParts/Head")
+node_b = NodePath("../../BodyParts/Body")
+disable_collision = false
+
+[node name="LeftHandJoint" type="PinJoint2D" parent="Joints"]
+position = Vector2(8, 20)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("../../BodyParts/LeftHand")
+node_b = NodePath("../../BodyParts/Body")
+angular_limit_lower = 0.942478
+angular_limit_upper = -0.792379
+
+[node name="RightHandJoint" type="PinJoint2D" parent="Joints"]
+position = Vector2(-8, 19)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("../../BodyParts/RightHand")
+node_b = NodePath("../../BodyParts/Body")
+angular_limit_lower = -0.523599
+angular_limit_upper = 0.523599
+
+[node name="LeftLegJoint" type="PinJoint2D" parent="Joints"]
+position = Vector2(7, 39)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("../../BodyParts/LeftLeg")
+node_b = NodePath("../../BodyParts/Body")
+angular_limit_enabled = true
+angular_limit_lower = -0.174533
+angular_limit_upper = 1.0472
+
+[node name="RightLegJoint" type="PinJoint2D" parent="Joints"]
+position = Vector2(-3, 39)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("../../BodyParts/RightLeg")
+node_b = NodePath("../../BodyParts/Body")
+angular_limit_enabled = true
+angular_limit_lower = -0.174533
+angular_limit_upper = 1.0472
+motor_target_velocity = 0.0872665
+
+[node name="GrooveJoint2D" type="GrooveJoint2D" parent="Joints"]
+position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
+node_a = NodePath("../../BodyParts/Hat")
+node_b = NodePath("../../BodyParts/Head")
+disable_collision = false
+length = 5.0
+initial_offset = 1.0
+
+[node name="BodyParts" type="Node2D" parent="."]
+
+[node name="Head" type="RigidBody2D" parent="BodyParts"]
+z_index = 1
+position = Vector2(0, 4)
+collision_layer = 32768
+collision_mask = 16385
+mass = 0.5
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/Head"]
+position = Vector2(0.75, 3)
+shape = SubResource("RectangleShape2D_0mctt")
+
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/Head"]
+texture = SubResource("AtlasTexture_mjpwo")
+
+[node name="Body" type="RigidBody2D" parent="BodyParts"]
+z_index = 1
+position = Vector2(1, 28)
+collision_layer = 16384
+collision_mask = 32769
+mass = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/Body"]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_ldm6s")
+
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/Body"]
+texture = SubResource("AtlasTexture_8jqld")
+
+[node name="LeftHand" type="RigidBody2D" parent="BodyParts"]
+position = Vector2(14, 28)
+collision_layer = 8192
+collision_mask = 32769
+mass = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/LeftHand"]
+position = Vector2(0, 1)
+rotation = -0.71733
+shape = SubResource("CapsuleShape2D_2ojdi")
+
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/LeftHand"]
+texture = SubResource("AtlasTexture_k1rwc")
+
+[node name="RightHand" type="RigidBody2D" parent="BodyParts"]
+z_index = 2
+position = Vector2(-10, 28)
+collision_layer = 4096
+collision_mask = 32769
+mass = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/RightHand"]
+rotation = 0.298451
+shape = SubResource("CapsuleShape2D_2ltmb")
+
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/RightHand"]
+texture = SubResource("AtlasTexture_d0ck5")
+
+[node name="LeftLeg" type="RigidBody2D" parent="BodyParts"]
+position = Vector2(13, 41)
+rotation = -1.07687
+collision_layer = 2048
+collision_mask = 3
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 15)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BodyParts/LeftLeg"]
+polygon = PackedVector2Array(-3, -7, -6, 8, 6, 8, 7, 4, 1, 3, 2, -7)
+
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/LeftLeg"]
+texture = SubResource("AtlasTexture_ip4ap")
+
+[node name="RightLeg" type="RigidBody2D" parent="BodyParts"]
+z_index = 2
+position = Vector2(-6, 45)
+rotation = 0.598648
+collision_layer = 1024
+collision_mask = 3
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 15)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BodyParts/RightLeg"]
+polygon = PackedVector2Array(-3, -8, -6, 8, 6, 8, 5, 4, 0, 4, 1, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/RightLeg"]
+texture = SubResource("AtlasTexture_7mos2")
+
+[node name="Hat" type="RigidBody2D" parent="BodyParts"]
+z_index = 1
+position = Vector2(0, -8)
+collision_layer = 512
+collision_mask = 32768
+mass = 0.2
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="BodyParts/Hat"]
+texture = SubResource("AtlasTexture_ih63x")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BodyParts/Hat"]
+polygon = PackedVector2Array(-11, 6, 11, 6, 11, 4, 4, -7, -3, -7, -11, 3)
