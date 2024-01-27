@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="GGJ24"
-run/main_scene="res://splash.tscn"
+run/main_scene="res://scenes/splash.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://scripts/Global.gd"
 
 [display]
 
