@@ -9,6 +9,7 @@ extends Node2D
 @onready var head = $BodyParts/Head
 @onready var hat = $Hat
 @onready var head_sprite = $BodyParts/Head/AnimatedSprite2D
+@onready var floor_raycast = $FloorRayCast2D
 
 const face_anims = ["anim_1", "anim_2", "anim_3", "anim_4", "anim_5"]
 
@@ -64,9 +65,13 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
+	_update_raycast_pos()
+	_clamp_head_rotation()
 	self.wall_collider.position = self.body.position - Vector2(0, 10)
 	if no_physics_timer > 0.0:
 		no_physics_timer -= delta
+		return
+	if not _floored():
 		return
 	if self.move_dir == Direction.RIGHT:
 		_move_right(delta)
@@ -74,14 +79,18 @@ func _physics_process(delta):
 		_move_left(delta)
 	else:
 		_idle(delta)
+		
+func _update_raycast_pos():
+	floor_raycast.position = body.position
 	
-	_clamp_head_rotation()
+func _floored():
+	return floor_raycast.is_colliding()
 
 func _clamp_head_rotation():
 	if head.rotation > PI / 2:
-		head.angular_velocity = -15
+		head.angular_velocity = -5
 	if head.rotation < -PI / 2:
-		head.angular_velocity = 15
+		head.angular_velocity = 5
 
 func _move_right(delta):
 	_flip(false)
@@ -90,7 +99,6 @@ func _move_right(delta):
 func _move_left(delta):
 	_flip(true)
 	_move(delta, Direction.LEFT)
-	
 
 func _move(delta, dir : Direction):
 	body.apply_impulse(Vector2(-8 * dir, -8))
@@ -102,11 +110,10 @@ func _move(delta, dir : Direction):
 	left_leg.angular_velocity = 15 * dir
 
 
-
 func _idle(delta):
 	right_leg.angular_velocity = 0
 	left_leg.angular_velocity = 0
-	head.apply_impulse(Vector2(0, -50))
+	head.apply_impulse(Vector2(0, -40))
 	left_leg.apply_impulse(Vector2(0, 10))
 	right_leg.apply_impulse(Vector2(0, 10))
 
@@ -120,3 +127,7 @@ func _on_side_wall_collider_area_entered(area:Area2D):
 	print(area.get_groups())
 	if area.is_in_group("SideWall"):
 		self.move_dir = self.move_dir * -1
+
+
+func _on_animated_sprite_2d_animation_finished():
+	head_sprite.play("idle")
