@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://uj6hcrskcqlb"]
 
-[ext_resource type="Texture2D" uid="uid://dmdrolaneupfy" path="res://assets/gfx/player.png" id="1_8w1ey"]
+[ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Script" path="res://drag_item.gd" id="2_t110e"]
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="3_trf0v"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
-[ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="5_eqecq"]
+[ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="5_eqecq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
 radius = 19.0

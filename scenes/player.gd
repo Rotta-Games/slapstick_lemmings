@@ -64,17 +64,25 @@ func _unhandled_input(event):
 			move_left = false
 			move_right = false
 			
-
 func _physics_process(delta):
 	if no_physics_timer > 0.0:
 		no_physics_timer -= delta
 		return
+		
 	if move_right:
 		_move_right(delta)
 	elif move_left:
 		_move_left(delta)
 	else:
 		_idle(delta)
+	
+	_clamp_head_rotation()
+
+func _clamp_head_rotation():
+	if head.rotation > PI / 2:
+		head.angular_velocity = -15
+	if head.rotation < -PI / 2:
+		head.angular_velocity = 15
 
 func _move_right(delta):
 	_flip(false)
