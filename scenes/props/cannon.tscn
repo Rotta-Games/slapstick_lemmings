@@ -57,7 +57,7 @@ script = ExtResource("1_g5anv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -9)
 sprite_frames = SubResource("SpriteFrames_27ybp")
-animation = &"shoot"
+animation = &"idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-23, -20, -26, 1, -7, 5, -5, 20, 24, 20, 27, -4, 17, -12)

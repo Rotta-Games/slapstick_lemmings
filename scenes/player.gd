@@ -7,6 +7,10 @@ extends Node2D
 @onready var body = $BodyParts/Body
 @onready var body_parts = $BodyParts
 @onready var head = $BodyParts/Head
+@onready var hat = $Hat
+@onready var head_sprite = $BodyParts/Head/AnimatedSprite2D
+
+const face_anims = ["anim_1", "anim_2", "anim_3", "anim_4", "anim_5"]
 
 var move_right : bool = false
 var move_left : bool = false
@@ -23,8 +27,13 @@ const NO_PHYSICS_DELAY = 1.0
 func _ready():
 	pass # Replace with function body.
 	
+func _play_random_face_anim():
+	var rand_index = randi() % face_anims.size()
+	head_sprite.play(face_anims[rand_index])
+	
 func slide_n_slip():
 	# please dont kill me
+	_play_random_face_anim()
 	var body_velocity = body.linear_velocity
 	var dir = Direction.LEFT if body_velocity.x < 0 else Direction.RIGHT
 	left_leg.apply_impulse(Vector2(SLIP_FORCE.x * dir, SLIP_FORCE.y / 2))
@@ -99,3 +108,5 @@ func _flip(value):
 		body_part.scale.x = -1 if value else 1
 
 
+func _on_animated_sprite_2d_animation_finished():
+	head_sprite.play("idle")
