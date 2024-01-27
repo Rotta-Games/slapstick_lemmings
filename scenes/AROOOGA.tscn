@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyfs1p1rhoibr"]
+
+[ext_resource type="Texture2D" uid="uid://maxi3rwrq286" path="res://assets/gfx/play_button.png" id="1_e01hb"]
+[ext_resource type="Texture2D" uid="uid://ckwnbnpgt3shc" path="res://assets/gfx/cut_button.png" id="2_18qbo"]
+
+[node name="GorillaScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -122.0
+offset_right = -872.0
+offset_bottom = -461.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionButton" type="TextureButton" parent="."]
+offset_left = 37.0
+offset_top = 86.0
+offset_right = 123.0
+offset_bottom = 150.0
+texture_normal = ExtResource("1_e01hb")
+
+[node name="CutButton" type="TextureButton" parent="."]
+offset_left = 129.0
+offset_top = 86.0
+offset_right = 215.0
+offset_bottom = 150.0
+texture_normal = ExtResource("2_18qbo")
