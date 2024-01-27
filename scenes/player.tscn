@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dvjtik7bc6gmv"]
+[gd_scene load_steps=36 format=3 uid="uid://dvjtik7bc6gmv"]
 
 [ext_resource type="Texture2D" uid="uid://b0t30l36sshut" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ydejx"]
@@ -273,9 +273,6 @@ region = Rect2(23, 240, 13, 16)
 atlas = ExtResource("1_xcw6x")
 region = Rect2(32, 176, 12, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yex4i"]
-size = Vector2(39, 40)
-
 [node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource("1_ydejx")
 
@@ -316,6 +313,7 @@ texture = SubResource("AtlasTexture_ih63x")
 z_index = 1
 position = Vector2(1, 28)
 collision_layer = 16384
+collision_mask = 65
 continuous_cd = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/Body"]
@@ -328,6 +326,7 @@ texture = SubResource("AtlasTexture_8jqld")
 [node name="LeftHand" type="RigidBody2D" parent="BodyParts" groups=["PlayerPart"]]
 position = Vector2(14, 28)
 collision_layer = 8192
+collision_mask = 65
 mass = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/LeftHand"]
@@ -350,6 +349,7 @@ angular_limit_upper = -0.792379
 z_index = 2
 position = Vector2(-10, 28)
 collision_layer = 4096
+collision_mask = 65
 mass = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyParts/RightHand"]
@@ -371,7 +371,7 @@ angular_limit_upper = 0.523599
 position = Vector2(13, 41)
 rotation = -1.07687
 collision_layer = 2048
-collision_mask = 3
+collision_mask = 67
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 15)
 continuous_cd = 2
@@ -397,7 +397,7 @@ z_index = 2
 position = Vector2(-6, 45)
 rotation = 0.598648
 collision_layer = 1024
-collision_mask = 3
+collision_mask = 67
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 15)
 continuous_cd = 2
@@ -419,18 +419,13 @@ angular_limit_lower = -0.174533
 angular_limit_upper = 1.0472
 motor_target_velocity = 0.0872665
 
-[node name="SideWallCollider" type="Area2D" parent="."]
-position = Vector2(0, -17)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SideWallCollider"]
-position = Vector2(0.5, 12)
-shape = SubResource("RectangleShape2D_yex4i")
-
 [node name="FloorRayCast2D" type="RayCast2D" parent="."]
 position = Vector2(1, 28)
 target_position = Vector2(0, 40)
 
+[node name="WallRayCast2D" type="RayCast2D" parent="."]
+position = Vector2(1, 29)
+target_position = Vector2(35, 0)
+collision_mask = 5
+
 [connection signal="animation_finished" from="BodyParts/Head/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="area_entered" from="SideWallCollider" to="." method="_on_side_wall_collider_area_entered"]

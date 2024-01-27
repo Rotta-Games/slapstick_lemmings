@@ -14,6 +14,8 @@ region = Rect2(82, 48, 22, 16)
 size = Vector2(20, 12)
 
 [node name="Banana" type="RigidBody2D"]
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_5sge8")
 
 [node name="PhysicsShape2D" type="CollisionShape2D" parent="."]
