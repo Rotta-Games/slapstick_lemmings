@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 @onready var left_leg = $BodyParts/LeftLeg
 @onready var right_leg = $BodyParts/RightLeg
 @onready var left_arm = $BodyParts/LeftArm
@@ -11,6 +13,10 @@ extends Node2D
 @onready var head_sprite = $BodyParts/Head/AnimatedSprite2D
 @onready var floor_raycast = $FloorRayCast2D
 @onready var wall_raycast = $WallRayCast2D
+
+var last_pos
+var last_rotation
+var slide_score = 0
 
 const face_anims = ["anim_1", "anim_2", "anim_3", "anim_4", "anim_5"]
 
@@ -28,7 +34,8 @@ const NO_PHYSICS_DELAY = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	last_pos = body.global_position
+	last_rotation = body.rotation
 	
 func _play_random_face_anim():
 	var rand_index = randi() % face_anims.size()
@@ -47,6 +54,7 @@ func slide_n_slip():
 		part.apply_torque_impulse(SLIP_TORQUE * dir)
 	_for_each_body_part(apply_torq)
 	_disable_physics(NO_PHYSICS_DELAY)
+	slide_score += 100
 
 func _disable_physics(time):
 	no_physics_timer = NO_PHYSICS_DELAY
@@ -67,6 +75,9 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	_update_raycast_pos()
 	_clamp_head_rotation()
+	_update_score()
+	last_pos = body.global_position
+	last_rotation = body.rotation_degrees
 	if no_physics_timer > 0.0:
 		no_physics_timer -= delta
 		return
@@ -81,6 +92,14 @@ func _physics_process(delta):
 	else:
 		_idle(delta)
 		
+func _update_score():
+	var score_up = slide_score
+	score_up += (max(0, abs(body.rotation_degrees - last_rotation) - 10))
+	score_up += (max(0, abs(body.global_position.x - last_pos.x) - 5))
+	score_up += (max(0, abs(body.global_position.y - last_pos.y) - 5))
+	Global.score += score_up
+	slide_score = 0
+
 func _update_raycast_pos():
 	floor_raycast.position = body.position
 	wall_raycast.position = body.position
