@@ -28,7 +28,6 @@ func _fire():
 	var cb = cannonball_scene.instantiate()
 	get_tree().root.add_child(cb)
 	cb.position = cannonball_spawn_point.global_position
-	print(raycast.rotation)
 	cb.apply_impulse(Vector2.from_angle(self.rotation + raycast.rotation + PI / 2) * FIRE_POWER)
 	self.apply_impulse(Vector2.from_angle(self.rotation + raycast.rotation + PI / 2) * 100 * -1)
 	animated_sprited.play("idle")
