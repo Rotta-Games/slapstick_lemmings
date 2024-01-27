@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8lbghk5bn7nh"]
+[gd_scene load_steps=10 format=3 uid="uid://c8lbghk5bn7nh"]
 
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="1_8g4bc"]
 [ext_resource type="Script" path="res://scenes/props/cannon.gd" id="1_g5anv"]
+[ext_resource type="AudioStream" uid="uid://1cs07gijikj6" path="res://assets/sfx/cannon.mp3" id="3_cgl72"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_macha"]
 atlas = ExtResource("1_8g4bc")
@@ -70,4 +71,10 @@ target_position = Vector2(0, 30)
 [node name="CannonBallSpawnPoint" type="Node2D" parent="."]
 position = Vector2(-35, -11)
 
+[node name="FireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cgl72")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
