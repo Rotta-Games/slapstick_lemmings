@@ -42,7 +42,7 @@ func _input(event):
 
 			self.prop.set_global_position(mouse_pos)
 			self.prop.freeze = false
-			self.prop.apply_central_force(diff * 1000)
+			self.prop.apply_central_force(diff * 250)
 
 			self.queue_free()
 

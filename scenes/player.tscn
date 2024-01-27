@@ -443,6 +443,7 @@ motor_target_velocity = 0.0872665
 [node name="FloorRayCast2D" type="RayCast2D" parent="."]
 position = Vector2(1, 28)
 target_position = Vector2(0, 40)
+collision_mask = 65
 
 [node name="WallRayCast2D" type="RayCast2D" parent="."]
 position = Vector2(1, 29)
