@@ -67,8 +67,8 @@ polygon = PackedVector2Array(-23, -20, -26, 1, -7, 5, -5, 20, 24, 20, 27, -4, 17
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-13, -9)
-rotation = 1.62316
-target_position = Vector2(0, 30)
+rotation = -3.07178
+target_position = Vector2(30, 0)
 
 [node name="CannonBallSpawnPoint" type="Node2D" parent="."]
 position = Vector2(-35, -11)
