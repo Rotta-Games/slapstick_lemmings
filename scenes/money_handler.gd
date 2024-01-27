@@ -3,10 +3,10 @@ extends Node
 @onready var money_text: Label = get_tree().get_root().get_node("Node2D/DragUI/Money") 
 
 @export var initial_player_money = 40
-var money = initial_player_money
+var money: int
 
 func _ready():
-	pass # Replace with function body.
+	money = initial_player_money
 
 func substract(amount):
 	money = money - amount

@@ -4,12 +4,9 @@ extends Node2D
 
 @onready var left_leg = $BodyParts/LeftLeg
 @onready var right_leg = $BodyParts/RightLeg
-@onready var left_arm = $BodyParts/LeftArm
-@onready var right_arm = $BodyParts/RightArm
 @onready var body = $BodyParts/Body
 @onready var body_parts = $BodyParts
 @onready var head = $BodyParts/Head
-@onready var hat = $Hat
 @onready var head_sprite = $BodyParts/Head/AnimatedSprite2D
 @onready var floor_raycast = $FloorRayCast2D
 @onready var wall_raycast = $WallRayCast2D
@@ -19,8 +16,6 @@ var last_rotation
 var slide_score = 0
 
 const face_anims = ["anim_1", "anim_2", "anim_3", "anim_4", "anim_5"]
-
-@onready var wall_collider = $SideWallCollider
 
 enum Direction{LEFT = -1, RIGHT = 1, NOPE = 0}
 var move_dir: Direction = Direction.RIGHT
@@ -56,7 +51,7 @@ func slide_n_slip():
 	_disable_physics(NO_PHYSICS_DELAY)
 	slide_score += 100
 
-func _disable_physics(time):
+func _disable_physics(_time):
 	no_physics_timer = NO_PHYSICS_DELAY
 
 func _for_each_body_part(cb):
@@ -124,7 +119,7 @@ func _move_right(delta):
 func _move_left(delta):
 	_move(delta, Direction.LEFT)
 
-func _move(delta, dir : Direction):
+func _move(_delta, dir : Direction):
 	body.apply_impulse(Vector2(-8 * dir, -8))
 	left_leg.apply_impulse(Vector2(8 * dir, -5))
 	right_leg.apply_impulse(Vector2(8 * dir, -5))
@@ -134,7 +129,7 @@ func _move(delta, dir : Direction):
 	left_leg.angular_velocity = 15 * dir
 
 
-func _idle(delta):
+func _idle(_delta):
 	right_leg.angular_velocity = 0
 	left_leg.angular_velocity = 0
 	head.apply_impulse(Vector2(0, -40))
@@ -149,7 +144,7 @@ func _flip_transform(dir):
 
 
 func _flip_direction():
-	self.move_dir = self.move_dir * -1
+	self.move_dir = (self.move_dir * -1) as Direction
 	_flip_transform(self.move_dir)
 	wall_raycast.scale.x *= -1
 
@@ -159,3 +154,8 @@ func _on_animated_sprite_2d_animation_finished():
 
 func get_position_for_real():
 	return body.global_position
+
+
+func _mihin_meni_pedro_tuu_takas():
+	pass
+
