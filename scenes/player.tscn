@@ -1,8 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://dvjtik7bc6gmv"]
+[gd_scene load_steps=37 format=3 uid="uid://djsog7ytd4f33"]
 
-[ext_resource type="Texture2D" uid="uid://b0t30l36sshut" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
+[ext_resource type="Texture2D" uid="uid://cr68f2nuaxylu" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ydejx"]
-[ext_resource type="Texture2D" uid="uid://dg18f6c6af1wg" path="res://assets/gfx/player-faces-shieet.png" id="2_wctdu"]
+[ext_resource type="Texture2D" uid="uid://bhqj3kjviafwb" path="res://assets/gfx/player-faces-shieet.png" id="2_wctdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mctt"]
 size = Vector2(16.5, 16)
@@ -107,14 +107,14 @@ animations = [{
 "texture": SubResource("AtlasTexture_gc3vq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_41lql")
+"texture": SubResource("AtlasTexture_gc3vq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gc3vq")
+"texture": SubResource("AtlasTexture_41lql")
 }],
 "loop": false,
 "name": &"anim_1",
-"speed": 20.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -143,7 +143,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"anim_2",
-"speed": 20.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -163,10 +163,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rw4p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idug5")
 }],
 "loop": false,
 "name": &"anim_3",
-"speed": 20.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -198,7 +201,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"anim_4",
-"speed": 20.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -227,7 +230,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"anim_5",
-"speed": 20.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -297,7 +300,9 @@ shape = SubResource("RectangleShape2D_0mctt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BodyParts/Head"]
 position = Vector2(0, 11)
 sprite_frames = SubResource("SpriteFrames_xwdh5")
-animation = &"anim_2"
+animation = &"anim_5"
+frame = 7
+frame_progress = 1.0
 
 [node name="HeadJoint" type="PinJoint2D" parent="BodyParts/Head"]
 position = Vector2(1, 12)
