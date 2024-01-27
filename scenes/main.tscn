@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_2wlp3"]
 [ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="2_50ohi"]
-[ext_resource type="Texture2D" uid="uid://bw0gypfq4v64i" path="res://assets/gfx/bg.png" id="3_oge1y"]
-[ext_resource type="FontFile" uid="uid://dh7nj4hmaphn4" path="res://assets/fonts/m5x7.ttf" id="3_rfbr6"]
+[ext_resource type="Texture2D" uid="uid://b87r3swibfhho" path="res://assets/gfx/bg.png" id="3_oge1y"]
+[ext_resource type="FontFile" uid="uid://bm05epdvoc4xt" path="res://assets/fonts/m5x7.ttf" id="3_rfbr6"]
 [ext_resource type="Texture2D" uid="uid://c3tttalllje6t" path="res://assets/gfx/logo.png" id="5_emx5h"]
 
 [node name="Main" type="Node2D"]
@@ -17,11 +17,13 @@ offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 z_index = -5
+layout_mode = 0
 offset_right = 962.0
 offset_bottom = 539.0
 texture = ExtResource("3_oge1y")
 
 [node name="StartButton" type="MenuButton" parent="Control"]
+layout_mode = 0
 offset_left = 90.0
 offset_top = 51.0
 offset_right = 245.0
@@ -32,6 +34,7 @@ text = "START"
 flat = false
 
 [node name="SettingsButton" type="MenuButton" parent="Control"]
+layout_mode = 0
 offset_left = 90.0
 offset_top = 134.0
 offset_right = 245.0
@@ -42,6 +45,7 @@ text = "SETTINGS"
 flat = false
 
 [node name="QuitButton" type="MenuButton" parent="Control"]
+layout_mode = 0
 offset_left = 90.0
 offset_top = 213.0
 offset_right = 245.0
