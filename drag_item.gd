@@ -22,5 +22,5 @@ func _gui_input(event):
 
 			var item = item_body.instantiate()
 			item.prop_scene = item_scene
-			get_tree().root.add_child(item)
+			get_node("%DragContainer").add_child(item)
 

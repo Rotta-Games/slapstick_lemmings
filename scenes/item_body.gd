@@ -13,8 +13,7 @@ func _ready():
 	set_global_position(mouse_pos)
 
 	self.prop = prop_scene.instantiate()
-	self.orig_gravity_scale = self.prop.gravity_scale
-	self.prop.gravity_scale = 0
+	self.prop.freeze = true
 	self.add_child(self.prop)
 
 
@@ -42,7 +41,7 @@ func _input(event):
 			get_tree().root.add_child(self.prop)
 
 			self.prop.set_global_position(mouse_pos)
-			self.prop.gravity_scale = self.orig_gravity_scale
+			self.prop.freeze = false
 			self.prop.apply_central_force(diff * 1000)
 
 			self.queue_free()

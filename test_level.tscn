@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
 [ext_resource type="PackedScene" uid="uid://djsog7ytd4f33" path="res://scenes/player.tscn" id="5_eqecq"]
 [ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="5_tv5ot"]
-[ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
+[ext_resource type="PackedScene" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="7_amta7"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="10_e15uk"]
 [ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="11_2vpl3"]
@@ -124,9 +124,6 @@ autowrap_mode = 3
 [node name="Player" parent="." instance=ExtResource("5_eqecq")]
 position = Vector2(46, 32)
 
-[node name="DragContainer" type="Node2D" parent="."]
-unique_name_in_owner = true
-
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="TopFloor" type="Polygon2D" parent="Walls"]
@@ -198,6 +195,10 @@ metadata/_edit_lock_ = true
 position = Vector2(75, -14.6667)
 shape = SubResource("RectangleShape2D_ggdbf")
 metadata/_edit_lock_ = true
+
+[node name="DragContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 2
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_e15uk")
