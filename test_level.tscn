@@ -23,7 +23,7 @@ region = Rect2(70, 41, 46, 29)
 position = Vector2(0, 496)
 scale = Vector2(6.4, 1.5)
 color = Color(0.145098, 0.521569, 0.513726, 1)
-polygon = PackedVector2Array(0, 0, 150, 0, 150, 32, 0, 32)
+polygon = PackedVector2Array(0, 0, 150, 0, 150, 15.5783, 150, 32, 0, 32)
 
 [node name="FloorBody" type="StaticBody2D" parent="Floor"]
 metadata/_edit_lock_ = true
@@ -58,7 +58,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -16.0
+offset_left = 304.0
 offset_top = 8.0
 offset_right = 48.0
 offset_bottom = 544.0

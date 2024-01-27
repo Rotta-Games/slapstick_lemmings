@@ -98,4 +98,5 @@ func _flip(value):
 	for body_part in body_parts.get_children():
 		body_part.scale.x = -1 if value else 1
 
-
+func get_position_lol():
+	return body.global_position

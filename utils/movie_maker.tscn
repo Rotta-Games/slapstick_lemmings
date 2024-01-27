@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://1uwu0vjeljld"]
+
+[ext_resource type="Script" path="res://utils/movie_maker.gd" id="1_yl15n"]
+
+[node name="MovieMaker" type="Node"]
+script = ExtResource("1_yl15n")
+
+[node name="MovieCamera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
