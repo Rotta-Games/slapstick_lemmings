@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://uj6hcrskcqlb"]
+[gd_scene load_steps=21 format=3 uid="uid://uj6hcrskcqlb"]
 
 [ext_resource type="Texture2D" uid="uid://dmdrolaneupfy" path="res://assets/gfx/player.png" id="1_8w1ey"]
 [ext_resource type="Script" path="res://drag_item.gd" id="2_t110e"]
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="3_trf0v"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
 [ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="5_eqecq"]
+[ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="5_tv5ot"]
+[ext_resource type="PackedScene" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc0ts"]
 radius = 19.0
@@ -13,6 +15,14 @@ height = 64.0
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1lmf"]
 atlas = ExtResource("3_trf0v")
 region = Rect2(70, 41, 46, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhbv6"]
+atlas = ExtResource("3_trf0v")
+region = Rect2(122.38, 17.1914, 74.1747, 51.7823)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30rxl"]
+atlas = ExtResource("3_trf0v")
+region = Rect2(253.756, 12.3058, 73.7082, 58.7799)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf5mq"]
 size = Vector2(150, 32)
@@ -86,11 +96,23 @@ offset_right = 20.0
 offset_bottom = 80.0
 grow_horizontal = 2
 
-[node name="TextureRect2" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
+[node name="Bannaani" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_t1lmf")
 script = ExtResource("2_t110e")
 item_scene = ExtResource("4_7c4ff")
+
+[node name="Alasi" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_hhbv6")
+script = ExtResource("2_t110e")
+item_scene = ExtResource("5_tv5ot")
+
+[node name="Kannuuna" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_30rxl")
+script = ExtResource("2_t110e")
+item_scene = ExtResource("6_o0ui6")
 
 [node name="Player" parent="." instance=ExtResource("5_eqecq")]
 position = Vector2(46, 32)
