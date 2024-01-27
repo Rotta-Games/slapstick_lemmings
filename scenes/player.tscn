@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=37 format=3 uid="uid://djsog7ytd4f33"]
-=======
-[gd_scene load_steps=36 format=3 uid="uid://dvjtik7bc6gmv"]
->>>>>>> abffa644d56d9e8b3e1adb5b13ce0fc95509043e
 
 [ext_resource type="Texture2D" uid="uid://cr68f2nuaxylu" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ydejx"]
