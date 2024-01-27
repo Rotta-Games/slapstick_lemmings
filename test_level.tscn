@@ -32,8 +32,14 @@ region = Rect2(253.756, 12.3058, 73.7082, 58.7799)
 
 [sub_resource type="Theme" id="Theme_qbbol"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giw7m"]
+size = Vector2(689, 44.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf5mq"]
-size = Vector2(700, 46)
+size = Vector2(700, 249.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyia4"]
+size = Vector2(653, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggdbf"]
 size = Vector2(150, 93.3334)
@@ -138,12 +144,10 @@ texture = ExtResource("7_amta7")
 polygon = PackedVector2Array(0, 0, 700, 0, 700, 45, 700, 45, 74.629, 45, 0, 45)
 
 [node name="FloorBody" type="StaticBody2D" parent="Walls/TopFloor"]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopFloor/FloorBody"]
-position = Vector2(350, 23)
-shape = SubResource("RectangleShape2D_pf5mq")
-metadata/_edit_lock_ = true
+position = Vector2(356.5, 22.75)
+shape = SubResource("RectangleShape2D_giw7m")
 
 [node name="LeftWall" type="Polygon2D" parent="Walls"]
 texture_repeat = 2
@@ -153,14 +157,12 @@ texture = ExtResource("7_amta7")
 polygon = PackedVector2Array(0, 0, 700, 0, 700, 23, 700, 45, 700, 45, 74.629, 45, 0, 45)
 
 [node name="FloorBody" type="StaticBody2D" parent="Walls/LeftWall"]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall/FloorBody"]
-position = Vector2(350, 23)
+position = Vector2(351, -79.9987)
 shape = SubResource("RectangleShape2D_pf5mq")
-metadata/_edit_lock_ = true
 
-[node name="LeftWall2" type="Polygon2D" parent="Walls"]
+[node name="RightWall" type="Polygon2D" parent="Walls"]
 z_index = 1
 texture_repeat = 2
 position = Vector2(851, 552)
@@ -169,13 +171,11 @@ texture = ExtResource("7_amta7")
 texture_scale = Vector2(-1, -1)
 polygon = PackedVector2Array(0, 0, 700, 0, 700, 23, 700, 45, 700, 45, 74.629, 45, 0, 45)
 
-[node name="FloorBody" type="StaticBody2D" parent="Walls/LeftWall2"]
-metadata/_edit_lock_ = true
+[node name="FloorBody" type="StaticBody2D" parent="Walls/RightWall"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall2/FloorBody"]
-position = Vector2(350, 23)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall/FloorBody"]
+position = Vector2(352, 124.126)
 shape = SubResource("RectangleShape2D_pf5mq")
-metadata/_edit_lock_ = true
 
 [node name="BottomFloor" type="Polygon2D" parent="Walls"]
 texture_repeat = 2
@@ -184,17 +184,14 @@ texture = ExtResource("7_amta7")
 polygon = PackedVector2Array(0, 0, 700, 0, 700, 45, 700, 45, 74.629, 45, 0, 45)
 
 [node name="FloorBody" type="StaticBody2D" parent="Walls/BottomFloor"]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomFloor/FloorBody"]
-position = Vector2(350, 23)
-shape = SubResource("RectangleShape2D_pf5mq")
-metadata/_edit_lock_ = true
+position = Vector2(324.5, 22)
+shape = SubResource("RectangleShape2D_pyia4")
 
 [node name="FloorBody" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 520)
 scale = Vector2(6.4, 0.75)
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/FloorBody"]
 position = Vector2(75, -14.6667)
