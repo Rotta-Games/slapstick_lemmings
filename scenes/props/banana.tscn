@@ -29,5 +29,6 @@ collision_mask = 3072
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBody"]
 shape = SubResource("RectangleShape2D_q6vxo")
+one_way_collision = true
 
 [connection signal="body_entered" from="CollisionBody" to="." method="_on_static_body_2d_body_entered"]

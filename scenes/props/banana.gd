@@ -1,11 +1,13 @@
 extends RigidBody2D
 
+@onready var player: Node2D = get_tree().get_nodes_in_group("Player")[0]
+@onready var collisionShape: CollisionShape2D = $CollisionBody/CollisionShape2D
 
 var draggable = true
 
 var last_mouse_pos = Vector2()
 var last_diff = float()
-
+var is_destroyed = false
 
 func _ready():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -41,14 +43,22 @@ func _input(event):
 
 
 func _on_static_body_2d_body_entered(body):
+	if is_destroyed:
+		pass
 	if body.is_in_group("PlayerPart"):
+		is_destroyed = true
+		collisionShape.set_deferred("disabled", true)
 		_push_player()
 		_trigger_dispose()
 		
 func _push_player():
-	var player = get_tree().get_nodes_in_group("Player")[0]
 	player.slide_n_slip()
 
 func _trigger_dispose():
-	print("TODO dewa tee animaatio banaanille")
-	queue_free()
+	self.scale.y = 0.5
+	if player.global_position.x < self.global_position.x:
+		print("jou")
+		self.apply_central_impulse(Vector2(1000,1000))
+	else:
+		self.apply_central_impulse(Vector2(1000,1000))
+	#queue_free()
