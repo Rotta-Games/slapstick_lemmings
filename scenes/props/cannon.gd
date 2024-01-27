@@ -5,6 +5,7 @@ extends RigidBody2D
 @onready var raycast = $RayCast2D
 @onready var fire_sound = $FireSound
 
+@export var price = 100
 
 var cannonball_scene = load("res://scenes/props/cannonball.tscn")
 
