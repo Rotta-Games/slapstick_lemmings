@@ -55,6 +55,7 @@ offset_top = -1.0
 offset_right = 959.0
 offset_bottom = 544.0
 texture = ExtResource("1_y4olj")
+metadata/_edit_lock_ = true
 
 [node name="DragUI" type="Control" parent="."]
 layout_mode = 3
@@ -148,6 +149,7 @@ polygon = PackedVector2Array(0, 0, 700, 0, 700, 45, 700, 45, 74.629, 45, 0, 45)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopFloor/FloorBody"]
 position = Vector2(356.5, 22.75)
 shape = SubResource("RectangleShape2D_giw7m")
+metadata/_edit_lock_ = true
 
 [node name="LeftWall" type="Polygon2D" parent="Walls"]
 texture_repeat = 2
@@ -161,6 +163,7 @@ polygon = PackedVector2Array(0, 0, 700, 0, 700, 23, 700, 45, 700, 45, 74.629, 45
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall/FloorBody"]
 position = Vector2(351, -79.9987)
 shape = SubResource("RectangleShape2D_pf5mq")
+metadata/_edit_lock_ = true
 
 [node name="RightWall" type="Polygon2D" parent="Walls"]
 z_index = 1
@@ -176,6 +179,7 @@ polygon = PackedVector2Array(0, 0, 700, 0, 700, 23, 700, 45, 700, 45, 74.629, 45
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall/FloorBody"]
 position = Vector2(352, 124.126)
 shape = SubResource("RectangleShape2D_pf5mq")
+metadata/_edit_lock_ = true
 
 [node name="BottomFloor" type="Polygon2D" parent="Walls"]
 texture_repeat = 2
@@ -188,6 +192,7 @@ polygon = PackedVector2Array(0, 0, 700, 0, 700, 45, 700, 45, 74.629, 45, 0, 45)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomFloor/FloorBody"]
 position = Vector2(324.5, 22)
 shape = SubResource("RectangleShape2D_pyia4")
+metadata/_edit_lock_ = true
 
 [node name="FloorBody" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 520)
