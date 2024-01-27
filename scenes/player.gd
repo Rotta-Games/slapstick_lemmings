@@ -67,8 +67,10 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_D:
 			self.move_dir = Direction.RIGHT
+			_flip_transform(Direction.RIGHT)
 		elif event.pressed and event.keycode == KEY_A:
 			self.move_dir = Direction.LEFT
+			_flip_transform(Direction.LEFT)
 		else:
 			self.move_dir = Direction.NOPE
 
@@ -118,11 +120,9 @@ func _clamp_head_rotation():
 
 func _move_right(delta):
 	_move(delta, Direction.RIGHT)
-	_flip_transform(Direction.RIGHT)
 
 func _move_left(delta):
 	_move(delta, Direction.LEFT)
-	_flip_transform(Direction.LEFT)
 
 func _move(delta, dir : Direction):
 	body.apply_impulse(Vector2(-8 * dir, -8))
@@ -142,10 +142,10 @@ func _idle(delta):
 	right_leg.apply_impulse(Vector2(0, 10))
 
 func _flip_transform(dir):
-	head.scale.x = dir
-	body.scale.x = dir
-	left_leg.scale.x = dir
-	right_leg.scale.x = dir
+	head.get_node("Sprite2D").scale.x = dir
+	body.get_node("Sprite2D").scale.x = dir
+	left_leg.get_node("Sprite2D").scale.x = dir
+	right_leg.get_node("Sprite2D").scale.x = dir
 
 
 func _flip_direction():
