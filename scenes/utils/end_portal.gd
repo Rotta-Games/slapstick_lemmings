@@ -2,6 +2,7 @@ extends Node
 @onready var player: Node2D = get_tree().get_nodes_in_group("Player")[0]
 @onready var end_text: Node = get_tree().get_root().get_node("Node2D/EndText") 
 @onready var end_sprite = $EndSprite
+@onready var stars = $Stars
 
 var victory = false
 # Called when the node enters the scene tree for the first time.
@@ -25,13 +26,18 @@ func _trigger_end():
 	var end_pos = end_sprite.global_position
 	end_pos.y += 640
 	tween_pos.tween_property(end_sprite, "global_position", end_pos, 0.8).set_trans(Tween.TRANS_EXPO)
-	tween_pos.tween_callback(_end)
+	if victory:
+		tween_pos.tween_callback(_display_stars)
+	else:
+		_end()
 
-	
-func _end(victory):
+func _display_stars():
+	var callable_end = Callable(self, "_end")
+	stars.show_stars(callable_end)
+
+func _end():
 	get_tree().paused = true
 	end_text.show_end(victory)
-
 
 func _on_end_timer_timeout():
 	victory = false
