@@ -19,7 +19,7 @@ region = Rect2(640, 128, 64, 64)
 atlas = ExtResource("1_j56xa")
 region = Rect2(640, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j247d"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_45bw7"]
 atlas = ExtResource("1_j56xa")
 region = Rect2(640, 0, 64, 64)
 
@@ -40,18 +40,19 @@ animations = [{
 }],
 "loop": false,
 "name": &"boom",
-"speed": 20.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j247d")
+"texture": SubResource("AtlasTexture_45bw7")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j8nh1"]
+resource_local_to_scene = true
 radius = 16.2788
 
 [node name="Bommi" type="RigidBody2D"]
@@ -59,7 +60,7 @@ script = ExtResource("1_1s3ml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_srw06")
-animation = &"idle"
+animation = &"boom"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j8nh1")
@@ -67,7 +68,5 @@ shape = SubResource("CircleShape2D_j8nh1")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-autostart = true
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://g78qh7qy7f3o"]
+[gd_scene load_steps=17 format=3 uid="uid://g78qh7qy7f3o"]
 
 [ext_resource type="Texture2D" uid="uid://bq4yi72pf8pjx" path="res://assets/gfx/script.png" id="1_3rk2u"]
 [ext_resource type="Texture2D" uid="uid://bghtigui03ibl" path="res://assets/gfx/script2.png" id="2_kud67"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="5_ljk0u"]
 [ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="6_pplb3"]
 [ext_resource type="PackedScene" uid="uid://b0il1v6emjqf5" path="res://scenes/props/cannon.tscn" id="7_kxrc0"]
+[ext_resource type="PackedScene" uid="uid://d4mo5xistq74d" path="res://scenes/props/bommi.tscn" id="7_ny4io"]
 [ext_resource type="Texture2D" uid="uid://bavw3phktgm06" path="res://assets/gfx/stem_boot_willy.png" id="8_3p80j"]
 [ext_resource type="PackedScene" uid="uid://cydjsftkpev4n" path="res://scenes/props/piemaster.tscn" id="9_6ekye"]
 
@@ -17,6 +18,10 @@ region = Rect2(70, 41, 46, 29)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhbv6"]
 atlas = ExtResource("3_x7hdy")
 region = Rect2(122.38, 17.1914, 74.1747, 51.7823)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8md1n"]
+atlas = ExtResource("3_x7hdy")
+region = Rect2(639.968, 0.173983, 62.7167, 65.9093)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_30rxl"]
 atlas = ExtResource("3_x7hdy")
@@ -85,6 +90,13 @@ texture = SubResource("AtlasTexture_hhbv6")
 script = ExtResource("4_h6p6o")
 item_scene = ExtResource("6_pplb3")
 price = 30
+
+[node name="Bombi" type="TextureRect" parent="ColorRect/ItemContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8md1n")
+script = ExtResource("4_h6p6o")
+item_scene = ExtResource("7_ny4io")
+price = 10
 
 [node name="Kannuuna" type="TextureRect" parent="ColorRect/ItemContainer"]
 layout_mode = 2
