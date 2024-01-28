@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="12_o2law"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="13_7rnd3"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="14_0wqwg"]
-[ext_resource type="PackedScene" path="res://scenes/AROOOGA.tscn" id="15_e4lp2"]
 [ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="16_yw5oi"]
 [ext_resource type="Script" path="res://LaughMeter.gd" id="17_f5mso"]
 [ext_resource type="PackedScene" uid="uid://cqgtk4u0ii3ea" path="res://scenes/utils/end_portal.tscn" id="18_1clqk"]
@@ -253,17 +252,6 @@ z_index = 2
 stream = ExtResource("14_0wqwg")
 volume_db = -23.892
 autoplay = true
-
-[node name="Arooga" parent="." instance=ExtResource("15_e4lp2")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -2.0
-offset_top = 361.0
-offset_right = -2.0
-offset_bottom = 361.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="MoneyHandler" parent="." instance=ExtResource("16_yw5oi")]
 initial_player_money = 240
