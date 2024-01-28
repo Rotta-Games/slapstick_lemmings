@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="1_5otn2"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="2_5f3d0"]
-[ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="4_862k1"]
+[ext_resource type="PackedScene" uid="uid://b0il1v6emjqf5" path="res://scenes/props/cannon.tscn" id="4_862k1"]
 [ext_resource type="PackedScene" uid="uid://cydjsftkpev4n" path="res://scenes/props/piemaster.tscn" id="5_3uaf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nucog"]
