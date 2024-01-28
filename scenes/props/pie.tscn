@@ -17,8 +17,10 @@ mass = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.18857
+scale = Vector2(0.6, 0.6)
 texture = SubResource("AtlasTexture_hchrw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -0.382227
+scale = Vector2(0.6, 0.6)
 shape = SubResource("CapsuleShape2D_6ibbg")
