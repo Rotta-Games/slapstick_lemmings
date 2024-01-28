@@ -13,8 +13,8 @@ func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 
-			if money_handler.money - price < 0:
-				return
+			#if money_handler.money - price < 0:
+			#	return
 
 			Global.is_dragging = true
 
