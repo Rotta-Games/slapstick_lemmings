@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cfaiung2qkht4"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_2wlp3"]
-[ext_resource type="Texture2D" uid="uid://clt24wi5f4h8a" path="res://assets/gfx/player.png" id="2_50ohi"]
+[ext_resource type="Texture2D" uid="uid://dmdrolaneupfy" path="res://assets/gfx/player.png" id="2_50ohi"]
 [ext_resource type="Texture2D" uid="uid://b87r3swibfhho" path="res://assets/gfx/bg.png" id="3_oge1y"]
 [ext_resource type="FontFile" uid="uid://bm05epdvoc4xt" path="res://assets/fonts/m5x7.ttf" id="3_rfbr6"]
 [ext_resource type="Texture2D" uid="uid://c3tttalllje6t" path="res://assets/gfx/logo.png" id="5_emx5h"]
@@ -34,12 +34,23 @@ texture = ExtResource("3_oge1y")
 [node name="StartButton" type="MenuButton" parent="Control"]
 layout_mode = 0
 offset_left = 90.0
-offset_top = 95.0
+offset_top = 52.0
 offset_right = 245.0
-offset_bottom = 160.0
+offset_bottom = 117.0
 theme_override_fonts/font = ExtResource("3_rfbr6")
 theme_override_font_sizes/font_size = 42
 text = "START"
+flat = false
+
+[node name="CreditsButton" type="MenuButton" parent="Control"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 125.0
+offset_right = 245.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("3_rfbr6")
+theme_override_font_sizes/font_size = 42
+text = "CREDITS"
 flat = false
 
 [node name="QuitButton" type="MenuButton" parent="Control"]
@@ -64,7 +75,7 @@ visible = false
 position = Vector2(628, 271)
 texture = ExtResource("5_emx5h")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="TitleText" type="RichTextLabel" parent="."]
 material = SubResource("ShaderMaterial_vpkvm")
 offset_left = 348.0
 offset_top = -214.0
@@ -82,6 +93,32 @@ SILLY
 [/outline_size]
 [/outline_color]
 [/color]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CreditsText" type="RichTextLabel" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_vpkvm")
+offset_left = 294.0
+offset_top = -106.0
+offset_right = 1604.0
+offset_bottom = 742.0
+scale = Vector2(0.678751, 0.58434)
+theme_override_fonts/normal_font = ExtResource("3_rfbr6")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[color=\"yellow\"]
+[outline_color=\"white\"]
+[outline_size=2]
+DeWa: Code
+JanisKeisari: Grapics
+Mutjake: Sound Design
+Skorpy: Code
+Zaih: Code
+[/outline_size]
+[/outline_color]
+[/color]
+"
 scroll_active = false
 autowrap_mode = 0
 
