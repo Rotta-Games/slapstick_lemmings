@@ -20,6 +20,7 @@ func _gui_input(event):
 
 			var item = item_body.instantiate()
 			item.prop_scene = item_scene
+			item.prop_rotate = self.flip_h and self.flip_v
 			get_node("%DragContainer").add_child(item)
 		elif event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			if Global.is_dragging:

@@ -3,6 +3,7 @@ extends Node2D
 var prop_scene: PackedScene
 var prop: Node2D
 var orig_gravity_scale: float
+var prop_rotate: bool = false
 
 var last_mouse_pos = Vector2()
 var last_diff = float()
@@ -13,6 +14,7 @@ func _ready():
 	set_global_position(mouse_pos)
 
 	self.prop = prop_scene.instantiate()
+	self.prop.rotate(PI)
 	self.prop.freeze = true
 	self.add_child(self.prop)
 
@@ -42,7 +44,7 @@ func _input(event):
 
 			self.prop.set_global_position(mouse_pos)
 			self.prop.freeze = false
-			self.prop.apply_central_force(diff * 1000)
+			self.prop.apply_central_force(diff * 250)
 
 			self.queue_free()
 
