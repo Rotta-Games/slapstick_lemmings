@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://d4mo5xistq74d"]
+
+[ext_resource type="Script" path="res://scenes/props/bommi.gd" id="1_1s3ml"]
+[ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="1_j56xa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ybwy"]
+atlas = ExtResource("1_j56xa")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rafm8"]
+atlas = ExtResource("1_j56xa")
+region = Rect2(640, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n56dx"]
+atlas = ExtResource("1_j56xa")
+region = Rect2(640, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p07xv"]
+atlas = ExtResource("1_j56xa")
+region = Rect2(640, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j247d"]
+atlas = ExtResource("1_j56xa")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_srw06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ybwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rafm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n56dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p07xv")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j247d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8nh1"]
+radius = 16.2788
+
+[node name="Bommi" type="RigidBody2D"]
+script = ExtResource("1_1s3ml")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_srw06")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j8nh1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
