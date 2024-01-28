@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://1ilalqgy567b"]
+[gd_scene load_steps=5 format=3 uid="uid://1ilalqgy567b"]
 
 [ext_resource type="Script" path="res://scenes/utils/end_text.gd" id="1_ufr5c"]
+[ext_resource type="FontFile" uid="uid://bm05epdvoc4xt" path="res://assets/fonts/m5x7.ttf" id="2_nb5i3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlpqf"]
+font = ExtResource("2_nb5i3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_f567d"]
+font = ExtResource("2_nb5i3")
 
 [node name="EndText" type="Node2D"]
 process_mode = 3
@@ -14,28 +21,34 @@ offset_bottom = 40.0
 
 [node name="Winrar" type="Label" parent="Control"]
 layout_mode = 0
+offset_top = 266.0
 offset_right = 172.0
-offset_bottom = 23.0
+offset_bottom = 289.0
 scale = Vector2(5.6, 11.24)
-text = "VOITIT PELIN :DD:DDD"
+text = "Dazzling review!"
+label_settings = SubResource("LabelSettings_mlpqf")
 horizontal_alignment = 1
 
 [node name="Lose" type="Label" parent="Control"]
 visible = false
 layout_mode = 0
-offset_right = 172.0
-offset_bottom = 23.0
+offset_left = 3.0
+offset_top = 99.0
+offset_right = 175.0
+offset_bottom = 128.0
 scale = Vector2(5.6, 11.24)
-text = "HÄVISIT PELIN :((:((("
+text = "Critics didn't even want to
+review this performance :("
+label_settings = SubResource("LabelSettings_f567d")
 horizontal_alignment = 1
 
 [node name="RerunButton" type="MenuButton" parent="Control"]
 layout_mode = 0
-offset_left = 475.0
-offset_top = 336.0
-offset_right = 597.0
-offset_bottom = 367.0
-text = "PALY AGAIN :D"
+offset_left = 426.0
+offset_top = 454.0
+offset_right = 548.0
+offset_bottom = 485.0
+text = "PLAY AGAIN"
 flat = false
 
 [connection signal="button_down" from="Control/RerunButton" to="." method="_on_rerun_button_button_down"]

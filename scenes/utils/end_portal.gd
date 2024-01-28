@@ -29,7 +29,8 @@ func _trigger_end():
 	if victory:
 		tween_pos.tween_callback(_display_stars)
 	else:
-		_end()
+		tween_pos.tween_callback(_end)
+		
 
 func _display_stars():
 	var callable_end = Callable(self, "_end")

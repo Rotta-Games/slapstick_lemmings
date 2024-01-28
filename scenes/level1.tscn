@@ -141,19 +141,6 @@ autoplay = true
 [node name="MoneyHandler" parent="." instance=ExtResource("16_yw5oi")]
 initial_player_money = 240
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TimeIndicator" type="Node2D" parent="CanvasLayer"]
-script = ExtResource("17_f5mso")
-
-[node name="TimeLabel" type="Label" parent="CanvasLayer/TimeIndicator"]
-offset_left = 762.0
-offset_top = 496.0
-offset_right = 877.0
-offset_bottom = 519.0
-text = "Time remaining"
-label_settings = SubResource("LabelSettings_81ycc")
-
 [node name="FilmButtons" parent="." instance=ExtResource("17_5y16f")]
 z_index = 1
 position = Vector2(6, -2)
@@ -181,6 +168,17 @@ wait_time = 60.0
 one_shot = true
 
 [node name="LaughOMatic" parent="." instance=ExtResource("14_wsl4i")]
+
+[node name="TimeIndicator" type="Node2D" parent="."]
+script = ExtResource("17_f5mso")
+
+[node name="TimeLabel" type="Label" parent="TimeIndicator"]
+offset_left = 762.0
+offset_top = 496.0
+offset_right = 877.0
+offset_bottom = 519.0
+text = "Time remaining"
+label_settings = SubResource("LabelSettings_81ycc")
 
 [connection signal="level_state_changed" from="." to="Player" method="_on_node_2d_level_state_changed"]
 [connection signal="timeout" from="EndTimer" to="EndPortal" method="_on_end_timer_timeout"]
