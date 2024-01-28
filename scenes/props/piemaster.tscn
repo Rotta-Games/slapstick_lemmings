@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cydjsftkpev4n"]
 
 [ext_resource type="Script" path="res://scenes/props/piemaster.gd" id="1_27m2o"]
-[ext_resource type="Texture2D" uid="uid://bavw3phktgm06" path="res://assets/gfx/stem_boot_willy.png" id="2_mcw7f"]
-[ext_resource type="AudioStream" uid="uid://1cs07gijikj6" path="res://assets/sfx/cannon.mp3" id="3_tr31v"]
+[ext_resource type="Texture2D" uid="uid://cl3xycete30y7" path="res://assets/gfx/stem_boot_willy.png" id="2_mcw7f"]
+[ext_resource type="AudioStream" uid="uid://vcoja82v3jll" path="res://assets/sfx/ggj24_pie.mp3" id="3_dp35y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3gds"]
 atlas = ExtResource("2_mcw7f")
@@ -70,7 +70,8 @@ target_position = Vector2(30, 0)
 position = Vector2(-15, -34)
 
 [node name="FireSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_tr31v")
+stream = ExtResource("3_dp35y")
+volume_db = -10.0
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 

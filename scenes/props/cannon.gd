@@ -9,8 +9,8 @@ extends RigidBody2D
 
 var cannonball_scene = load("res://scenes/props/cannonball.tscn")
 
-@export var FIRE_POWER = 1500.0
-@export var FIRE_DELAY_MAX = 5.0
+const FIRE_POWER = 1500.0
+const FIRE_DELAY_MAX = 5.0
 var fire_delay = FIRE_DELAY_MAX
 
 # Called when the node enters the scene tree for the first time.

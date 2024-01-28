@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://drag_item.gd" id="6_e4de6"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="7_e1ffk"]
 [ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="8_7f12l"]
-[ext_resource type="PackedScene" path="res://scenes/props/cannon.tscn" id="9_6esxx"]
-[ext_resource type="Texture2D" uid="uid://bavw3phktgm06" path="res://assets/gfx/stem_boot_willy.png" id="10_2yaod"]
+[ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="9_6esxx"]
+[ext_resource type="Texture2D" uid="uid://cl3xycete30y7" path="res://assets/gfx/stem_boot_willy.png" id="10_2yaod"]
 [ext_resource type="PackedScene" uid="uid://cydjsftkpev4n" path="res://scenes/props/piemaster.tscn" id="11_gxnt7"]
 [ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="12_o2law"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="13_7rnd3"]
@@ -51,7 +51,7 @@ size = Vector2(700, 249.75)
 size = Vector2(653, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggdbf"]
-size = Vector2(150, 93.3334)
+size = Vector2(207.656, 386.667)
 
 [sub_resource type="LabelSettings" id="LabelSettings_81ycc"]
 font_size = 10
@@ -231,7 +231,7 @@ position = Vector2(0, 520)
 scale = Vector2(6.4, 0.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/FloorBody"]
-position = Vector2(75, -14.6667)
+position = Vector2(69.1406, 132)
 shape = SubResource("RectangleShape2D_ggdbf")
 metadata/_edit_lock_ = true
 

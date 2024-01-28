@@ -1,8 +1,8 @@
 [gd_scene load_steps=37 format=3 uid="uid://dvjtik7bc6gmv"]
 
-[ext_resource type="Texture2D" uid="uid://bojhg81f3vvng" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
+[ext_resource type="Texture2D" uid="uid://b0t30l36sshut" path="res://assets/gfx/player-shieet.png" id="1_xcw6x"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ydejx"]
-[ext_resource type="Texture2D" uid="uid://c6efj3q2hq5us" path="res://assets/gfx/player-faces-shieet.png" id="2_wctdu"]
+[ext_resource type="Texture2D" uid="uid://dg18f6c6af1wg" path="res://assets/gfx/player-faces-shieet.png" id="2_wctdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mctt"]
 size = Vector2(16.5, 16)

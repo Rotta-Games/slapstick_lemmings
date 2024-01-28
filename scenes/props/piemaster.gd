@@ -10,7 +10,7 @@ extends RigidBody2D
 var pie_scene = load("res://scenes/props/pie.tscn")
 
 @export var FIRE_POWER: float = 500.0
-@export var FIRE_DELAY_MAX: float = 1.0
+@export var FIRE_DELAY_MAX: float = 2.5
 var fire_delay = FIRE_DELAY_MAX
 
 # Called when the node enters the scene tree for the first time.

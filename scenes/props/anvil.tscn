@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d078k3p4ef5wd"]
+[gd_scene load_steps=4 format=3 uid="uid://d078k3p4ef5wd"]
 
 [ext_resource type="Script" path="res://scenes/props/anvil.gd" id="1_estv0"]
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="1_itmv4"]
