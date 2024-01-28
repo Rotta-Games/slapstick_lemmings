@@ -55,7 +55,7 @@ func slide_n_slip():
 		part.apply_torque_impulse(SLIP_TORQUE * dir)
 	_for_each_body_part(apply_torq)
 	_disable_physics(NO_PHYSICS_DELAY)
-	hit_score += 100
+	hit_score += 50
 	
 func _pie_hit():
 	# please kill me
@@ -66,7 +66,7 @@ func _pie_hit():
 	body.apply_impulse(Vector2(PIE_FORCE.x * dir, PIE_FORCE.y))
 	head.apply_impulse(Vector2(PIE_FORCE.x * dir * -1, PIE_FORCE.y))
 	_disable_physics(NO_PHYSICS_DELAY / 2)
-	hit_score += 100
+	hit_score += 300
 
 
 func _disable_physics(_time):
@@ -112,8 +112,8 @@ func _physics_process(delta):
 func _update_score():
 	var score_up = hit_score
 	score_up += (max(0, abs(body.rotation_degrees - last_rotation) - 10))
-	score_up += (max(0, abs(body.global_position.x - last_pos.x) - 5))
-	score_up += (max(0, abs(body.global_position.y - last_pos.y) - 5))
+	score_up += (max(0, abs(body.global_position.x - last_pos.x) - 4))
+	score_up += (max(0, abs(body.global_position.y - last_pos.y) - 4))
 	Global.score += score_up
 	hit_score = 0
 
