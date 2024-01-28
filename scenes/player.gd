@@ -12,6 +12,7 @@ extends Node2D
 @onready var wall_raycast = $WallRayCast2D
 @onready var pie_hit_sound = $PieHitSound
 @onready var cannonball_hit_sound = $CannonballHitSound
+@onready var banana_slip_sound = $BananaSlipSound
 
 var last_pos
 var last_rotation
@@ -41,6 +42,7 @@ func _play_random_face_anim():
 	head_sprite.play(face_anims[rand_index])
 	
 func slide_n_slip():
+	banana_slip_sound.play()
 	# please dont kill me
 	_play_random_face_anim()
 	var body_velocity = body.linear_velocity
