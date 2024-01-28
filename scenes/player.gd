@@ -64,7 +64,7 @@ func _pie_hit():
 	var body_velocity = body.linear_velocity
 	var dir = Direction.LEFT if body_velocity.x < 0 else Direction.RIGHT
 	body.apply_impulse(Vector2(PIE_FORCE.x * dir, PIE_FORCE.y))
-	head.apply_impulse(Vector2(PIE_FORCE.x * dir * -1, PIE_FORCE.y * -0.5))
+	head.apply_impulse(Vector2(PIE_FORCE.x * dir * -1, PIE_FORCE.y))
 	_disable_physics(NO_PHYSICS_DELAY / 2)
 	hit_score += 100
 
