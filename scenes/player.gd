@@ -11,6 +11,7 @@ extends Node2D
 @onready var floor_raycast = $FloorRayCast2D
 @onready var wall_raycast = $WallRayCast2D
 @onready var pie_hit_sound = $PieHitSound
+@onready var cannonball_hit_sound = $CannonballHitSound
 
 var last_pos
 var last_rotation
@@ -183,8 +184,9 @@ func _on_prop_detector_area_2d_body_entered(body):
 		_cannonball_hit(body)
 		
 func _cannonball_hit(body):
-	print("TODO play cannonball hit sound and remove layer 8 from body")
-
+	if body.instantiation_timestamp + 1 > (Time.get_ticks_msec() / 1000.0) and not body.already_hit_the_player:
+		cannonball_hit_sound.play()
+		body.already_hit_the_player = true
 
 
 func _on_node_2d_level_state_changed(new_state):

@@ -13,6 +13,7 @@ func _ready():
 	var mouse_pos = get_viewport().get_mouse_position()
 	set_global_position(mouse_pos)
 
+
 	self.prop = prop_scene.instantiate()
 	self.prop.rotate(PI if self.prop_rotate else 0)
 	self.prop.freeze = true
