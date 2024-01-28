@@ -4,9 +4,13 @@ extends Node
 @onready var end_sprite = $EndSprite
 @onready var stars = $Stars
 
+var end_pos
+
 var victory = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	end_pos = end_sprite.global_position
+	end_pos.y += 640
 	pass # Replace with function body.
 
 
@@ -23,8 +27,6 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 		
 func _trigger_end():
 	var tween_pos = get_tree().create_tween()
-	var end_pos = end_sprite.global_position
-	end_pos.y += 640
 	tween_pos.tween_property(end_sprite, "global_position", end_pos, 0.8).set_trans(Tween.TRANS_EXPO)
 	if victory:
 		tween_pos.tween_callback(_display_stars)

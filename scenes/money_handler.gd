@@ -2,7 +2,7 @@ extends Node
 
 @onready var money_text: Label = get_tree().get_root().get_node("Node2D/DragUI/Money") 
 
-@export var initial_player_money = 40
+@export var initial_player_money = 9999999
 var money: int
 
 func _ready():
