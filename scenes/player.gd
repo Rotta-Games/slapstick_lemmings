@@ -10,6 +10,7 @@ extends Node2D
 @onready var head_sprite = $BodyParts/Head/AnimatedSprite2D
 @onready var floor_raycast = $FloorRayCast2D
 @onready var wall_raycast = $WallRayCast2D
+@onready var pie_hit_sound = $PieHitSound
 
 var last_pos
 var last_rotation
@@ -55,7 +56,7 @@ func slide_n_slip():
 	
 func _pie_hit():
 	# please kill me
-	print("TODO pie hit sound pls add")
+	pie_hit_sound.play()
 	_play_random_face_anim()
 	var body_velocity = body.linear_velocity
 	var dir = Direction.LEFT if body_velocity.x < 0 else Direction.RIGHT
