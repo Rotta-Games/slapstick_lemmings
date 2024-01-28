@@ -14,7 +14,7 @@ func _ready():
 	set_global_position(mouse_pos)
 
 	self.prop = prop_scene.instantiate()
-	self.prop.rotate(PI)
+	self.prop.rotate(PI if self.prop_rotate else 0)
 	self.prop.freeze = true
 	self.add_child(self.prop)
 
