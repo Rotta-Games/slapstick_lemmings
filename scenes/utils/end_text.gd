@@ -26,5 +26,6 @@ func reset_level():
 		item.queue_free()
 	get_tree().call_group("Items", "queue_free")
 	get_tree().reload_current_scene()
+	Global.score = 0
 
 

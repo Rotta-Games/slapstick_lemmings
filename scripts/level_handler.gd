@@ -25,6 +25,7 @@ func reset_level():
 		item.queue_free()
 	get_tree().call_group("Items", "queue_free")
 	get_tree().reload_current_scene()
+	Global.score = 0
 	
 func run_level():
 	level_state_changed.emit(LevelState.ACTIVE)
@@ -35,3 +36,4 @@ func _process(delta):
 
 func reset():
 	get_tree().reload_current_scene()
+	Global.score = 0
