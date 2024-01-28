@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var label = $ScoreLabel
+@onready var time_label = $TimeLabel
+@onready var timer: Timer = get_tree().get_root().get_node("Node2D/EndTimer") 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,6 +10,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	Global.score -= delta
-	label.text = "Laugh score\n" + str(int(Global.score))
+	var format_str = "Time remaining\n%ss"
+	time_label.text = format_str % str(int(timer.time_left))
 	
