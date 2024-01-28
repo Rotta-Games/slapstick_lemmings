@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://drag_item.gd" id="6_e4de6"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="7_e1ffk"]
 [ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="8_7f12l"]
-[ext_resource type="PackedScene" uid="uid://c8lbghk5bn7nh" path="res://scenes/props/cannon.tscn" id="9_6esxx"]
-[ext_resource type="Texture2D" uid="uid://cl3xycete30y7" path="res://assets/gfx/stem_boot_willy.png" id="10_2yaod"]
+[ext_resource type="PackedScene" uid="uid://b0il1v6emjqf5" path="res://scenes/props/cannon.tscn" id="9_6esxx"]
+[ext_resource type="Texture2D" uid="uid://bavw3phktgm06" path="res://assets/gfx/stem_boot_willy.png" id="10_2yaod"]
 [ext_resource type="PackedScene" uid="uid://cydjsftkpev4n" path="res://scenes/props/piemaster.tscn" id="11_gxnt7"]
 [ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="12_o2law"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="13_7rnd3"]
@@ -127,6 +127,14 @@ price = 30
 [node name="Kannuuna" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_30rxl")
+script = ExtResource("6_e4de6")
+item_scene = ExtResource("9_6esxx")
+price = 40
+
+[node name="Kannuuna2" type="TextureRect" parent="DragUI/ColorRect/ItemContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_30rxl")
+flip_h = true
 script = ExtResource("6_e4de6")
 item_scene = ExtResource("9_6esxx")
 price = 40
