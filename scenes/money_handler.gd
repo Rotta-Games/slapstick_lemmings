@@ -7,6 +7,7 @@ var money: int
 
 func _ready():
 	money = initial_player_money
+	money_text.visible = false
 
 func substract(amount):
 	money = money - amount
