@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf51wv8kgggvl"]
+
+[ext_resource type="Texture2D" uid="uid://maxi3rwrq286" path="res://assets/gfx/play_button.png" id="1_joj4y"]
+[ext_resource type="Script" path="res://scenes/utils/film_buttons.gd" id="1_wabut"]
+
+[node name="FilmButtons" type="Node2D"]
+script = ExtResource("1_wabut")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 268.0
+offset_right = 40.0
+offset_bottom = 308.0
+
+[node name="ActionButton" type="TextureButton" parent="Control"]
+offset_top = 207.0
+offset_right = 86.0
+offset_bottom = 271.0
+texture_normal = ExtResource("1_joj4y")

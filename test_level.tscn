@@ -6,20 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://bq4yi72pf8pjx" path="res://assets/gfx/script.png" id="3_leb7l"]
 [ext_resource type="Texture2D" uid="uid://cow2bdqm7ldcq" path="res://assets/gfx/items-shieet.png" id="3_trf0v"]
 [ext_resource type="PackedScene" uid="uid://dhm3olaboa48h" path="res://scenes/props/banana.tscn" id="4_7c4ff"]
-[ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="5_eqecq"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="5_eqecq"]
 [ext_resource type="PackedScene" uid="uid://d078k3p4ef5wd" path="res://scenes/props/anvil.tscn" id="5_tv5ot"]
 [ext_resource type="PackedScene" uid="uid://b0il1v6emjqf5" path="res://scenes/props/cannon.tscn" id="6_o0ui6"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="7_amta7"]
 [ext_resource type="Texture2D" uid="uid://bghtigui03ibl" path="res://assets/gfx/script2.png" id="9_d2pou"]
-[ext_resource type="Texture2D" uid="uid://cl3xycete30y7" path="res://assets/gfx/stem_boot_willy.png" id="10_8y83n"]
+[ext_resource type="Texture2D" uid="uid://cu63g8h401yqc" path="res://assets/gfx/stem_boot_willy.png" id="10_8y83n"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="10_e15uk"]
-[ext_resource type="PackedScene" uid="uid://cydjsftkpev4n" path="res://scenes/props/piemaster.tscn" id="10_rpwou"]
-[ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="11_2vpl3"]
-[ext_resource type="PackedScene" path="res://scenes/AROOOGA.tscn" id="11_k67h1"]
+[ext_resource type="PackedScene" path="res://scenes/props/piemaster.tscn" id="10_rpwou"]
+[ext_resource type="PackedScene" uid="uid://ctqbpdbl0br2e" path="res://scenes/money_handler.tscn" id="11_2vpl3"]
 [ext_resource type="Script" path="res://LaughMeter.gd" id="11_pairg"]
 [ext_resource type="PackedScene" uid="uid://cqgtk4u0ii3ea" path="res://scenes/utils/end_portal.tscn" id="16_1wksq"]
 [ext_resource type="PackedScene" uid="uid://1ilalqgy567b" path="res://scenes/utils/end_text.tscn" id="16_xufr7"]
 [ext_resource type="Texture2D" uid="uid://cu2j2nkbewd6s" path="res://assets/gfx/curtain.png" id="19_ewf43"]
+[ext_resource type="PackedScene" uid="uid://bf51wv8kgggvl" path="res://scenes/utils/film_buttons.tscn" id="17_kn8cv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1lmf"]
 atlas = ExtResource("3_trf0v")
@@ -246,17 +246,6 @@ stream = ExtResource("10_e15uk")
 volume_db = -23.892
 autoplay = true
 
-[node name="Arooga" parent="." instance=ExtResource("11_k67h1")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -2.0
-offset_top = 361.0
-offset_right = -2.0
-offset_bottom = 361.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="MoneyHandler" parent="." instance=ExtResource("11_2vpl3")]
 initial_player_money = 240
 
@@ -274,6 +263,10 @@ text = "Laugh score
 "
 label_settings = SubResource("LabelSettings_81ycc")
 
+[node name="FilmButtons" parent="." instance=ExtResource("17_kn8cv")]
+z_index = 1
+position = Vector2(2.08165e-12, 2.08165e-12)
+
 [node name="EndPortal" parent="." instance=ExtResource("16_1wksq")]
 position = Vector2(793, 382)
 
@@ -287,3 +280,5 @@ texture = ExtResource("19_ewf43")
 visible = false
 z_index = 101
 z_as_relative = false
+
+[connection signal="level_state_changed" from="." to="Player" method="_on_node_2d_level_state_changed"]

@@ -14,6 +14,7 @@ extends Node2D
 var last_pos
 var last_rotation
 var hit_score = 0
+var is_active = false
 
 const face_anims = ["anim_1", "anim_2", "anim_3", "anim_4", "anim_5"]
 
@@ -80,7 +81,11 @@ func _unhandled_input(event):
 			self.move_dir = Direction.LEFT
 			_flip_transform(Direction.LEFT)
 
-func _physics_process(delta):
+func _physics_process(delta):	
+	if !is_active:
+		_idle(delta)
+		return
+		
 	_update_raycast_pos()
 	_clamp_head_rotation()
 	_update_score()
@@ -179,3 +184,12 @@ func _on_prop_detector_area_2d_body_entered(body):
 func _cannonball_hit(body):
 	print("TODO play cannonball hit sound and remove layer 8 from body")
 
+
+
+func _on_node_2d_level_state_changed(new_state):
+	# This is enum and should be fetched from levelhandles
+	# but fuck it! Don't care! Number it is now
+	if new_state == 1:
+		is_active = true
+	else:
+		is_active = false
