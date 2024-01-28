@@ -135,6 +135,7 @@ price = 40
 layout_mode = 2
 texture = SubResource("AtlasTexture_30rxl")
 flip_h = true
+flip_v = true
 script = ExtResource("6_e4de6")
 item_scene = ExtResource("9_6esxx")
 price = 40
