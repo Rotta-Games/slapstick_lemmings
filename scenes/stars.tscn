@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bliciwbw6v4w3"]
+
+[ext_resource type="Script" path="res://scenes/stars.gd" id="1_xvuwr"]
+[ext_resource type="Texture2D" uid="uid://sk48hht3kjv4" path="res://assets/gfx/empty_star.png" id="2_a33hw"]
+[ext_resource type="Texture2D" uid="uid://e73y47tyrcm5" path="res://assets/gfx/full_star.png" id="3_oos2e"]
+[ext_resource type="AudioStream" uid="uid://bdmeuhef4neyd" path="res://assets/sfx/anvil.mp3" id="4_n17y7"]
+
+[node name="Stars" type="Node2D"]
+script = ExtResource("1_xvuwr")
+
+[node name="EmptyStar1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(170, 210)
+texture = ExtResource("2_a33hw")
+
+[node name="FullStar1" type="Sprite2D" parent="."]
+position = Vector2(149, 1147)
+texture = ExtResource("3_oos2e")
+
+[node name="EmptyStar2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(470, 160)
+texture = ExtResource("2_a33hw")
+
+[node name="FullStar2" type="Sprite2D" parent="."]
+position = Vector2(449, 1097)
+texture = ExtResource("3_oos2e")
+
+[node name="EmptyStar3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(770, 210)
+texture = ExtResource("2_a33hw")
+
+[node name="FullStar3" type="Sprite2D" parent="."]
+position = Vector2(749, 1147)
+texture = ExtResource("3_oos2e")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n17y7")
+
+[node name="StarPlace1" type="Node2D" parent="."]
+position = Vector2(174, 214)
+
+[node name="StarPlace2" type="Node2D" parent="."]
+position = Vector2(474, 164)
+
+[node name="StarPlace3" type="Node2D" parent="."]
+position = Vector2(774, 214)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

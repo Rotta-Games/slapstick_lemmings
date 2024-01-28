@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwrp6sw056fs7"]
+[gd_scene load_steps=20 format=3 uid="uid://bwrp6sw056fs7"]
 
 [ext_resource type="Script" path="res://scripts/level_handler.gd" id="1_2gjpj"]
 [ext_resource type="Texture2D" uid="uid://dclw16bd4s4qa" path="res://assets/gfx/bg2.png" id="2_18li8"]
@@ -6,12 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="12_o2law"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="13_7rnd3"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="14_0wqwg"]
-[ext_resource type="PackedScene" uid="uid://ctqbpdbl0br2e" path="res://scenes/money_handler.tscn" id="16_yw5oi"]
+[ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="16_yw5oi"]
 [ext_resource type="PackedScene" uid="uid://bf51wv8kgggvl" path="res://scenes/utils/film_buttons.tscn" id="17_5y16f"]
 [ext_resource type="Script" path="res://LaughMeter.gd" id="17_f5mso"]
 [ext_resource type="PackedScene" uid="uid://cqgtk4u0ii3ea" path="res://scenes/utils/end_portal.tscn" id="18_1clqk"]
 [ext_resource type="Texture2D" uid="uid://cu2j2nkbewd6s" path="res://assets/gfx/curtain.png" id="19_6c1ap"]
 [ext_resource type="PackedScene" uid="uid://1ilalqgy567b" path="res://scenes/utils/end_text.tscn" id="19_adhuh"]
+[ext_resource type="PackedScene" uid="uid://bliciwbw6v4w3" path="res://scenes/stars.tscn" id="19_biijq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_giw7m"]
 size = Vector2(689, 44.5)
@@ -164,6 +165,10 @@ z_index = 100
 position = Vector2(-331, -729)
 scale = Vector2(2, 2)
 texture = ExtResource("19_6c1ap")
+
+[node name="Stars" parent="EndPortal" instance=ExtResource("19_biijq")]
+z_index = 200
+position = Vector2(-793, -382)
 
 [node name="EndText" parent="." instance=ExtResource("19_adhuh")]
 visible = false

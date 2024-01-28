@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func show_end():
+func show_end(victory):
 	show()
 
 func reset_level():
