@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ydejx"]
 [ext_resource type="Texture2D" uid="uid://dg18f6c6af1wg" path="res://assets/gfx/player-faces-shieet.png" id="2_wctdu"]
 [ext_resource type="AudioStream" uid="uid://bj4746b0tihg4" path="res://assets/sfx/ggj24_pie_spruit.mp3" id="4_annou"]
-[ext_resource type="AudioStream" uid="uid://cbajge6y366fo" path="res://assets/sfx/ggj24_cannon_hit_dazzling.mp3" id="5_1ni0e"]
+[ext_resource type="AudioStream" uid="uid://befhgmgo4ka1i" path="res://assets/sfx/ggj24_cannon_hit_dazzling.mp3" id="5_1ni0e"]
 [ext_resource type="AudioStream" uid="uid://nng8ixkdotxr" path="res://assets/sfx/ggj24_banana.mp3" id="6_tflpb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mctt"]

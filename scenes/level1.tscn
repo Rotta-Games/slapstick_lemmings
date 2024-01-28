@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwrp6sw056fs7"]
+[gd_scene load_steps=21 format=3 uid="uid://bwrp6sw056fs7"]
 
 [ext_resource type="Script" path="res://scripts/level_handler.gd" id="1_2gjpj"]
 [ext_resource type="Texture2D" uid="uid://dclw16bd4s4qa" path="res://assets/gfx/bg2.png" id="2_18li8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dvjtik7bc6gmv" path="res://scenes/player.tscn" id="12_o2law"]
 [ext_resource type="Texture2D" uid="uid://7bdd6nuiab37" path="res://assets/gfx/crate.png" id="13_7rnd3"]
 [ext_resource type="AudioStream" uid="uid://b3qai6rbm06sy" path="res://assets/music/ggj24_ragtime_1_160.mp3" id="14_0wqwg"]
+[ext_resource type="PackedScene" uid="uid://bvisxmhda7vx8" path="res://scenes/LaughOMatic.tscn" id="14_wsl4i"]
 [ext_resource type="PackedScene" path="res://scenes/money_handler.tscn" id="16_yw5oi"]
 [ext_resource type="PackedScene" uid="uid://bf51wv8kgggvl" path="res://scenes/utils/film_buttons.tscn" id="17_5y16f"]
 [ext_resource type="Script" path="res://LaughMeter.gd" id="17_f5mso"]
@@ -178,6 +179,8 @@ z_as_relative = false
 [node name="EndTimer" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
+
+[node name="LaughOMatic" parent="." instance=ExtResource("14_wsl4i")]
 
 [connection signal="level_state_changed" from="." to="Player" method="_on_node_2d_level_state_changed"]
 [connection signal="timeout" from="EndTimer" to="EndPortal" method="_on_end_timer_timeout"]

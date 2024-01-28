@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvisxmhda7vx8"]
+
+[ext_resource type="Script" path="res://scenes/LaughOMatic.gd" id="1_t2wh7"]
+[ext_resource type="AudioStream" uid="uid://3l3uotm11nco" path="res://assets/sfx/laugh1.mp3" id="2_smk73"]
+[ext_resource type="AudioStream" uid="uid://4ywu668ee48p" path="res://assets/sfx/laugh2.mp3" id="3_s4vs5"]
+[ext_resource type="AudioStream" uid="uid://ccy4j1yeplhr5" path="res://assets/sfx/laugh3.mp3" id="4_m768n"]
+[ext_resource type="AudioStream" uid="uid://mep3faqkj2oo" path="res://assets/sfx/laugh4.mp3" id="5_bi8m7"]
+
+[node name="LaughOMatic" type="Node2D"]
+script = ExtResource("1_t2wh7")
+
+[node name="LaughAudio1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_smk73")
+
+[node name="LaughAudio2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s4vs5")
+
+[node name="LaughAudio3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_m768n")
+
+[node name="LaughAudio4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_bi8m7")
