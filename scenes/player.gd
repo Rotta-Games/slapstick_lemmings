@@ -79,8 +79,6 @@ func _unhandled_input(event):
 		elif event.pressed and event.keycode == KEY_A:
 			self.move_dir = Direction.LEFT
 			_flip_transform(Direction.LEFT)
-		else:
-			self.move_dir = Direction.NOPE
 
 func _physics_process(delta):
 	_update_raycast_pos()
