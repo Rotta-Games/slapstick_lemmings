@@ -12,12 +12,21 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Winrar" type="Label" parent="Control"]
 layout_mode = 0
 offset_right = 172.0
 offset_bottom = 23.0
 scale = Vector2(5.6, 11.24)
 text = "VOITIT PELIN :DD:DDD"
+horizontal_alignment = 1
+
+[node name="Lose" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 23.0
+scale = Vector2(5.6, 11.24)
+text = "HÄVISIT PELIN :((:((("
 horizontal_alignment = 1
 
 [node name="RerunButton" type="MenuButton" parent="Control"]

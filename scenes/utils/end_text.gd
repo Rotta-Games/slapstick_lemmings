@@ -2,6 +2,9 @@ extends Node2D
 @export var next_level: PackedScene
 @onready var current_scene: Node2D = get_tree().get_root().get_node("Node2D") 
 
+@onready var win = $Control/Winrar
+@onready var lose = $Control/Lose
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
@@ -12,6 +15,8 @@ func _process(delta):
 	pass
 
 func show_end(victory):
+	win.visible = victory
+	lose.visible = not victory
 	show()
 
 func reset_level():
