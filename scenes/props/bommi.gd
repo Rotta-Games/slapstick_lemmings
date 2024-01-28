@@ -5,11 +5,16 @@ extends RigidBody2D
 @onready var sound = $FireSound
 
 var timer
+var orig_radius
+
+func _ready():
+	orig_radius = shape.shape.radius
 
 func _on_timer_timeout():
 	var tween = get_tree().create_tween()
 	sound.play()
 	tween.tween_property(shape.shape, "radius", 100, 0.1)
+	tween.tween_property(shape.shape, "radius", orig_radius, 0)
 	var kill_timer = get_tree().create_timer(0.5)
 	kill_timer.connect("timeout", self._on_fire_sound_finished)
 
