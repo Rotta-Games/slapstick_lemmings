@@ -20,22 +20,13 @@ scale = Vector2(5.6, 11.24)
 text = "VOITIT PELIN :DD:DDD"
 horizontal_alignment = 1
 
-[node name="NextButton" type="MenuButton" parent="Control"]
-layout_mode = 0
-offset_left = 447.0
-offset_top = 316.0
-offset_right = 604.0
-offset_bottom = 347.0
-text = "OH SHIT :D NEXT :D"
-flat = false
-
 [node name="RerunButton" type="MenuButton" parent="Control"]
 layout_mode = 0
-offset_left = 317.0
-offset_top = 316.0
-offset_right = 425.0
-offset_bottom = 347.0
-text = "NO :D AGAIN"
+offset_left = 475.0
+offset_top = 336.0
+offset_right = 597.0
+offset_bottom = 367.0
+text = "PALY AGAIN :D"
 flat = false
 
 [connection signal="button_down" from="Control/RerunButton" to="." method="_on_rerun_button_button_down"]
