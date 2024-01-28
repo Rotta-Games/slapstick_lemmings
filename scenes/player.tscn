@@ -458,6 +458,7 @@ stream = ExtResource("4_annou")
 
 [node name="CannonballHitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_1ni0e")
+volume_db = -6.19
 
 [node name="BananaSlipSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_tflpb")
