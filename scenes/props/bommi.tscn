@@ -24,6 +24,7 @@ atlas = ExtResource("1_j56xa")
 region = Rect2(640, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_srw06"]
+resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -60,13 +61,7 @@ script = ExtResource("1_1s3ml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_srw06")
-animation = &"boom"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j8nh1")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
