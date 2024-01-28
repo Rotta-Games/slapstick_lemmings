@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3tttalllje6t" path="res://assets/gfx/logo.png" id="5_emx5h"]
 [ext_resource type="AudioStream" uid="uid://j6f0ny837clc" path="res://assets/music/ggj24_3.1.mp3" id="6_iqr17"]
 [ext_resource type="Shader" path="res://scripts/wavy_text.gdshader" id="6_l10os"]
-[ext_resource type="AudioStream" uid="uid://ccy4j1yeplhr5" path="res://assets/sfx/laugh3.mp3" id="8_kyvoj"]
+[ext_resource type="AudioStream" uid="uid://cir6wv4sp8msf" path="res://assets/sfx/ggj24_shortlaugh.mp3" id="8_jioqa"]
 [ext_resource type="AudioStream" uid="uid://bdmeuhef4neyd" path="res://assets/sfx/anvil.mp3" id="9_rrsah"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vpkvm"]
@@ -91,7 +91,7 @@ volume_db = -11.712
 autoplay = true
 
 [node name="QuitSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_kyvoj")
+stream = ExtResource("8_jioqa")
 
 [node name="StartSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_rrsah")
